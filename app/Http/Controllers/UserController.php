@@ -3,65 +3,56 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Enums\UserStatus;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return view('login');
+        return match($request->r) {
+            UserStatus::PEMBELI->value => $this->userPembeli(),
+            UserStatus::PENJUAL->value => $this->userPenjual(),
+            default => back()
+        };
     }
 
-    public function create()
+    private function userPembeli()
     {
-        return view('register');
-    }
-
-    public function store(Request $request)
-    {
-        $validatedData = $request->validate([
-            'nama' => ['required'],
-            'email' => ['required'],
-            'username' => ['required'],
-            'password' => ['required']
+        return view('pages.admin.data-users', [
+            'users' => User::where('status', UserStatus::PEMBELI)->get()
         ]);
-
-        $validatedData['password'] = Hash::make($validatedData['password']);
-
-        if (count(User::where('username', $validatedData['username'])->get()) > 0) {
-            return back()->with('error', 'Username Sudah Digunakan!');
-        }
-
-
-        $user = User::create($validatedData);
-        dd(User::where('username', $user->username)->get('id'));
-        $user->pembeli()->create(['id' => User::where('username', $user->username)->get('id')]);
-        return redirect(route('loginpage'))->with('success', 'Registrasi Sukses!');
     }
 
-    public function authenticate(Request $request)
+    private function userPenjual()
     {
-        $credentials = $request->validate([
-            'username' => ['required'],
-            'password' => ['required']
+        return view('pages.admin.data-sellers', [
+            'users' => User::with('toko')->withCount('produks')->where('status', UserStatus::PENJUAL)->get()
         ]);
-
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-
-            return redirect()->intended('/');
-        }
-
-        return back()->with('error', 'Username/Password Salah!');
     }
 
-    public function logout(Request $request)
+    public function profil()
     {
-        Auth::logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-        return redirect(route('home'));
+        return match(Auth::user()->status) {
+            UserStatus::ADMIN => $this->profilAdmin(),
+            UserStatus::PEMBELI => $this->profilPembeli(),
+            UserStatus::PENJUAL => $this->profilPenjual()
+        };
+    }
+
+    private function profilAdmin()
+    {
+        return view('pages.admin.profile');
+    }
+
+    private function profilPembeli()
+    {
+        return view('pages.buyer.profile');
+    }
+
+    private function profilPenjual()
+    {
+        return view('pages.seller.profile');
     }
 }
