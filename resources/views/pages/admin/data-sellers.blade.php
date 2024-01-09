@@ -230,7 +230,7 @@
                                         <tr>
                                             <th scope="row">{{ $loop->iteration }}</th>
                                             <td>
-                                                <a href=""
+                                                {{-- <a href=""
                                                     onclick="edit_data_seller(
                                            '{{ $user->toko->nama }}',
                                            'assets/img/{{ $user->toko->foto }}',
@@ -241,11 +241,12 @@
                                            '{{ $user->email }}'
                                         )"
                                                     data-bs-toggle="modal"
-                                                    data-bs-target="#modalSellers">{{ $user->toko->nama }}</a>
+                                                    data-bs-target="#modalSellers">{{ $user->toko->nama }}</a> --}}
+                                                {{ $user->toko->nama }}
                                             </td>
                                             <td>{{ $user->nomor_hp ?? '-' }}</td>
                                             <td>{{ $user->produks_count }}</td>
-                                            <td>{{ App\Actions\ConvertToDayOfWeek::handle($user->toko->buka) }}</td>
+                                            <td>{{ App\Actions\ConvertToDayOfWeek::handle($user->toko->buka) ?? '-' }}</td>
                                             <td>
                                                 <span @class([
                                                     'badge ',

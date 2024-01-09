@@ -20,7 +20,7 @@
                     <div class="card">
                         <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
                             <img src="assets/img/fluffy.png" alt="Profile" class="rounded-circle" />
-                            <h2>Fluffy Pancake</h2>
+                            <h2>{{ $toko->nama }}</h2>
                         </div>
                     </div>
                 </div>
@@ -48,37 +48,41 @@
                                     </button>
                                 </li>
                             </ul>
+
                             <div class="tab-content pt-2">
                                 <div class="tab-pane fade show active profile-overview" id="profile-overview">
                                     <h5 class="card-title">Tentang</h5>
                                     <p class="small fst-italic">
-                                        Fluffy Pancake menjual berbagai pancake dengan beberapa varian rasa
-                                        dan rasa tradisional seperti rasa gula aren, rasa klepon dan lain-lain
+                                        {{ $toko->deskripsi ?? '-' }}
                                     </p>
 
                                     <h5 class="card-title">Profil Toko</h5>
 
                                     <div class="row">
                                         <div class="col-lg-3 col-md-4 label">Nama Toko</div>
-                                        <div class="col-lg-9 col-md-8">Fluffy Pancake</div>
+                                        <div class="col-lg-9 col-md-8">{{ $toko->nama }}</div>
                                     </div>
 
                                     <div class="row">
                                         <div class="col-lg-3 col-md-4 label">Pengelola</div>
                                         <div class="col-lg-9 col-md-8">
-                                            Putri, Sri , Maesaroh
+                                            @forelse ($toko->pengelola as $item)
+                                                {{ $item }}
+                                            @empty
+                                                -
+                                            @endforelse
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="col-lg-3 col-md-4 label">No. Telepon</div>
-                                        <div class="col-lg-9 col-md-8">0823458494585</div>
+                                        <div class="col-lg-9 col-md-8">{{ auth()->user()->nomor_hp ?? '-' }}</div>
                                     </div>
 
                                     <div class="row">
                                         <div class="col-lg-3 col-md-4 label">Email</div>
                                         <div class="col-lg-9 col-md-8">
-                                            putrisrimaesaroh@gmail.com
+                                            {{ auth()->user()->email }}
                                         </div>
                                     </div>
                                 </div>
@@ -212,43 +216,9 @@
                                     <!-- End Profile Edit Form -->
                                 </div>
 
-
                                 <div class="tab-pane fade pt-3" id="profile-change-password">
                                     <!-- Change Password Form -->
-                                    <form>
-                                        <div class="row mb-3">
-                                            <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Password
-                                                Sekarang</label>
-                                            <div class="col-md-8 col-lg-9">
-                                                <input name="password" type="password" class="form-control"
-                                                    id="currentPassword" />
-                                            </div>
-                                        </div>
-
-                                        <div class="row mb-3">
-                                            <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">Password
-                                                Baru</label>
-                                            <div class="col-md-8 col-lg-9">
-                                                <input name="newpassword" type="password" class="form-control"
-                                                    id="newPassword" />
-                                            </div>
-                                        </div>
-
-                                        <div class="row mb-3">
-                                            <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">Konfirmasi
-                                                Password Baru</label>
-                                            <div class="col-md-8 col-lg-9">
-                                                <input name="renewpassword" type="password" class="form-control"
-                                                    id="renewPassword" />
-                                            </div>
-                                        </div>
-
-                                        <div class="text-center">
-                                            <button type="submit" class="btn btn-primary">
-                                                Simpan Password
-                                            </button>
-                                        </div>
-                                    </form>
+                                    @include('components.change-password-form')
                                     <!-- End Change Password Form -->
                                 </div>
                             </div>

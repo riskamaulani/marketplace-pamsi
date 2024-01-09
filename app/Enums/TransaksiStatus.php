@@ -5,6 +5,7 @@ namespace App\Enums;
 enum TransaksiStatus: String
 {
     case KONFIRMASI = 'konfirmasi';
+    case DIBAYAR = 'dibayar';
     case BATAL = 'dibatalkan';
     case PROSES = 'diproses';
     case KIRIM = 'dikirim';
@@ -13,6 +14,11 @@ enum TransaksiStatus: String
     public function isKonfirmasi(): bool
     {
         return $this === self::KONFIRMASI;
+    }
+
+    public function isDibayar(): bool
+    {
+        return $this === self::DIBAYAR;
     }
 
     public function isBatal(): bool
@@ -39,6 +45,7 @@ enum TransaksiStatus: String
     {
         return match($this) {
             self::KONFIRMASI => 'Menunggu Pembayaran',
+            self::DIBAYAR => 'Pembayaran Selesai',
             self::BATAL => 'Pesanan Dibatalkan',
             self::PROSES => 'Pesanan Diproses',
             self::KIRIM => 'Sedang Dikirim',

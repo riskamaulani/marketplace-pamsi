@@ -17,7 +17,6 @@
         <section class="section seller-data-products">
             <div class="row">
                 <div class="col-lg-12">
-
                     <div class="card">
                         <div class="card-body">
                             <div class="row">
@@ -26,8 +25,9 @@
                                 </div>
                                 <div class="col-3 d-flex align-items-center justify-content-end">
                                     <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                        data-bs-target="#modalAddNewProduct"><i class="bi bi-plus"></i>Tambah
-                                        Produk</button>
+                                        data-bs-target="#modalAddNewProduct">
+                                        <i class="bi bi-plus"></i>Tambah Produk
+                                    </button>
 
                                     <div class="modal fade" id="modalAddNewProduct" tabindex="-1">
                                         <div class="modal-dialog modal-dialog-scrollable">
@@ -66,7 +66,7 @@
                                                                         </div>
                                                                     </div>
 
-                                                                    <div class="row mb-3">
+                                                                    {{-- <div class="row mb-3">
                                                                         <label for="noproduct"
                                                                             class="col-sm-4 col-form-label">No.
                                                                             Produk</label>
@@ -75,7 +75,7 @@
                                                                                 class="form-control" id="noproduct"
                                                                                 value="#" />
                                                                         </div>
-                                                                    </div>
+                                                                    </div> --}}
 
                                                                     <div class="row mb-3">
                                                                         <label for="name"
@@ -83,35 +83,30 @@
                                                                             Produk</label>
                                                                         <div class="col-sm-8">
                                                                             <input name="name" type="text"
-                                                                                class="form-control" id="name"
-                                                                                value="#" />
+                                                                                class="form-control" id="name" />
                                                                         </div>
                                                                     </div>
 
                                                                     <div class="row mb-3">
-                                                                        <label for="price"
+                                                                        <label for="harga"
                                                                             class="col-sm-4 col-form-label">Harga</label>
                                                                         <div class="col-sm-8">
-                                                                            <input name="price" type="text"
-                                                                                class="form-control" id="price"
-                                                                                value="#" />
+                                                                            <input name="harga" type="text"
+                                                                                class="form-control" id="harga" />
                                                                         </div>
                                                                     </div>
 
-
                                                                     <div class="row mb-3">
-                                                                        <label for="category"
+                                                                        <label for="kategori"
                                                                             class="col-sm-4 col-form-label">Jenis
                                                                             Produk</label>
                                                                         <div class="col-sm-8">
-                                                                            <input name="category" type="text"
-                                                                                class="form-control" id="category"
-                                                                                value="#" />
+                                                                            <input name="kategori" type="text"
+                                                                                class="form-control" id="kategori" />
                                                                         </div>
                                                                     </div>
 
-
-                                                                    <div class="row mb-3">
+                                                                    {{-- <div class="row mb-3">
                                                                         <label for="statusproduct"
                                                                             class="col-sm-4 col-form-label">Jenis
                                                                             Pemesanan</label>
@@ -126,9 +121,9 @@
 
                                                                             </select>
                                                                         </div>
-                                                                    </div>
+                                                                    </div> --}}
 
-                                                                    <div class="row mb-3">
+                                                                    {{-- <div class="row mb-3">
                                                                         <label for="minOrder"
                                                                             class="col-sm-4 col-form-label">Minimal
                                                                             Pemesanan</label>
@@ -137,9 +132,9 @@
                                                                                 class="form-control" id="minOrder"
                                                                                 value="#" />
                                                                         </div>
-                                                                    </div>
+                                                                    </div> --}}
 
-                                                                    <div class="row mb-3">
+                                                                    {{-- <div class="row mb-3">
                                                                         <label for="scheduleDelivery"
                                                                             class="col-sm-4 col-form-label">Jadwal
                                                                             Pengantaran</label>
@@ -148,23 +143,23 @@
                                                                                 class="form-control" id="scheduleDelivery"
                                                                                 value="#" />
                                                                         </div>
-                                                                    </div>
+                                                                    </div> --}}
 
                                                                     <div class="row mb-3">
-                                                                        <label class="col-sm-4 col-form-label">Detail
+                                                                        <label for="deskripsi"
+                                                                            class="col-sm-4 col-form-label">Detail
                                                                             Produk</label>
                                                                         <div class="col-sm-8">
-                                                                            <textarea class="form-control" style="height: 100px">#</textarea>
-
+                                                                            <textarea name="deskripsi" class="form-control" style="height: 100px">#</textarea>
                                                                         </div>
                                                                     </div>
 
                                                                     <div class="row mb-3">
-                                                                        <label for="statusproduct"
+                                                                        <label for="status"
                                                                             class="col-sm-4 col-form-label">Status
                                                                             Produk</label>
                                                                         <div class="col-sm-8">
-                                                                            <select class="form-select"
+                                                                            <select name="status" class="form-select"
                                                                                 aria-label="Default select example">
                                                                                 <option selected>Open this select menu
                                                                                 </option>
@@ -174,16 +169,12 @@
                                                                             </select>
                                                                         </div>
                                                                     </div>
-
-
-
                                                                 </form>
-
                                                             </div>
                                                         </div>
                                                     </div>
-
                                                 </div>
+
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary"
                                                         data-bs-dismiss="modal">Batal</button>

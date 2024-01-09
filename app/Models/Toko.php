@@ -16,7 +16,8 @@ class Toko extends Model
     protected $guarded = [];
 
     protected $attributes = [
-        'buka' => [false, false, false, false, false, false, false],
+        'pengelola' => '[]',
+        'buka' => '[0, 0, 0, 0, 0, 0, 0]',
         'foto' => null,
         'deskripsi' => null,
         'status' => TokoStatus::BUKA

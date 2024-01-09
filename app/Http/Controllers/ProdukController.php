@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Produk;
 use Illuminate\Http\Request;
+use App\Http\Requests\ProductStoreRequest;
 
 class ProdukController extends Controller
 {
@@ -12,49 +13,21 @@ class ProdukController extends Controller
         return view('pages.seller.products');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function store(ProductStoreRequest $request)
     {
-        //
+        dd($request);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
     public function show(Produk $produk)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Produk $produk)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, Produk $produk)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Produk $produk)
     {
         //

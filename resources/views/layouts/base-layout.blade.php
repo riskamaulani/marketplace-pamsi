@@ -7,6 +7,9 @@
 
     @yield('title')
 
+    {{-- laravel notify css --}}
+    @notifyCss
+
     <!-- Favicons -->
     <link href="assets/img/favicon.png" rel="icon" />
     <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
@@ -35,6 +38,12 @@
 
 <body>
     @yield('main_content')
+
+    {{-- laravel notify js --}}
+    <div class="fixed-top">
+        <x-notify::notify />
+    </div>
+    @notifyJs
 
     <!-- Vendor JS Files -->
     <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>

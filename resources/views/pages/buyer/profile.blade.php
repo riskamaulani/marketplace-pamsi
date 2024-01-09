@@ -51,32 +51,32 @@
                                 <div class="tab-pane fade show active profile-overview" id="profile-overview">
                                     <div class="row">
                                         <div class="col-lg-3 col-md-4 label">Nama Lengkap</div>
-                                        <div class="col-lg-9 col-md-8">: Maesaroh</div>
+                                        <div class="col-lg-9 col-md-8">: {{ auth()->user()->nama }}</div>
                                     </div>
 
                                     <div class="row">
                                         <div class="col-lg-3 col-md-4 label">Username</div>
                                         <div class="col-lg-9 col-md-8">
-                                            : maesaroh
+                                            : {{ auth()->user()->username }}
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="col-lg-3 col-md-4 label">No. Telepon</div>
-                                        <div class="col-lg-9 col-md-8">: 0823458494585</div>
+                                        <div class="col-lg-9 col-md-8">: {{ auth()->user()->nomor_hp ?? '-' }}</div>
                                     </div>
 
                                     <div class="row">
                                         <div class="col-lg-3 col-md-4 label">Email</div>
                                         <div class="col-lg-9 col-md-8">
-                                            : putrisrimaesaroh@gmail.com
+                                            : {{ auth()->user()->email ?? '-' }}
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="col-lg-3 col-md-4 label">Alamat</div>
                                         <div class="col-lg-9 col-md-8">
-                                            : Jalan Dasan Agung Mataram
+                                            : {{ auth()->user()->alamat ?? '-' }}
                                         </div>
                                     </div>
                                 </div>
@@ -149,40 +149,7 @@
 
                                 <div class="tab-pane fade pt-3" id="profile-change-password">
                                     <!-- Change Password Form -->
-                                    <form>
-                                        <div class="row mb-3">
-                                            <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Password
-                                                Sekarang</label>
-                                            <div class="col-md-8 col-lg-9">
-                                                <input name="password" type="password" class="form-control"
-                                                    id="currentPassword" />
-                                            </div>
-                                        </div>
-
-                                        <div class="row mb-3">
-                                            <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">Password
-                                                Baru</label>
-                                            <div class="col-md-8 col-lg-9">
-                                                <input name="newpassword" type="password" class="form-control"
-                                                    id="newPassword" />
-                                            </div>
-                                        </div>
-
-                                        <div class="row mb-3">
-                                            <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">Konfirmasi
-                                                Password Baru</label>
-                                            <div class="col-md-8 col-lg-9">
-                                                <input name="renewpassword" type="password" class="form-control"
-                                                    id="renewPassword" />
-                                            </div>
-                                        </div>
-
-                                        <div class="text-center">
-                                            <button type="submit" class="btn btn-primary">
-                                                Simpan Password
-                                            </button>
-                                        </div>
-                                    </form>
+                                    @include('components.change-password-form')
                                     <!-- End Change Password Form -->
                                 </div>
                             </div>
