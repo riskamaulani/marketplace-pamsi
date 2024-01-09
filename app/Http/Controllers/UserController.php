@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Toko;
 use App\Models\User;
 use App\Enums\UserStatus;
 use Illuminate\Http\Request;
@@ -53,6 +54,8 @@ class UserController extends Controller
 
     private function profilPenjual()
     {
-        return view('pages.seller.profile');
+        return view('pages.seller.profile', [
+            'toko' => auth()->user()->toko
+        ]);
     }
 }

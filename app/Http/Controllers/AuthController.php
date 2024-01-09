@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Actions\ChangePassword;
-use App\Models\User;
 use Illuminate\Http\Request;
 use App\Actions\RegisterNewUser;
 use App\Http\Requests\UserAuthenticateRequest;
@@ -30,12 +29,19 @@ class AuthController extends Controller
 
         try {
             // register new user (pembeli)
-            $user = $registerNewUser->pembeli($request);
+            $user = $registerNewUser->pembeli(
+                $request->nama,
+                $request->username,
+                $request->password,
+                $request->email
+            );
         } catch (\Throwable $th) {
-            return back()->with('error', 'Registrasi Gagal!');
+            notify()->error('Pendaftaran gagal, silahkan coba lagi.', 'Registrasi Gagal!');
+            return back();
         }
 
-        return redirect(route('loginpage'))->with('success', 'Registrasi Sukses!');
+        notify()->success('Berhasil melakukan pendaftaran', 'Registrasi Sukses!');
+        return redirect(route('loginpage'));
     }
 
     public function authenticate(UserAuthenticateRequest $request)
@@ -45,23 +51,32 @@ class AuthController extends Controller
 
         // try to login
         if (Auth::attempt($credentials)) {
+            // login success
+            notify()->success('Selamat datang, ' . Auth::user()->nama, 'Login Sukses!');
             $request->session()->regenerate();
             return redirect()->intended('/');
         }
 
-        return back()->with('error', 'Username/Password Salah!');
+        // login failed
+        notify()->error('Username/Password salah.', 'Login Gagal!');
+        return back();
     }
 
     public function changePassword(UserChangePasswordRequest $request, ChangePassword $changePassword)
     {
         try {
             // try to change password of user
-            $changePassword->handle($request, Auth::user());
+            $changePassword->handle(
+                $request->current_password,
+                $request->new_password
+            );
         } catch (\Throwable $th) {
-            return back()->withErrors($th->getMessage());
+            notify()->error($th->getMessage(), 'Update Password Gagal!');
+            return back();
         }
 
-        return back()->with('success', 'Ganti Password Sukses!');
+        notify()->success('Password berhasil diupdate', 'Sukses!');
+        return back();
     }
 
     public function logout(Request $request)

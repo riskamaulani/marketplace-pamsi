@@ -11,18 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('transaksis', function (Blueprint $table) {
+        Schema::create('pesanans', function (Blueprint $table) {
             $table->string('id', 15)->primary();
-            $table->string('pesanan_id', 15);
-            $table->string('toko_id', 15);
+            $table->string('user_id', 15);
             $table->integer('total');
-            $table->string('bukti');
             $table->string('status');
             $table->timestamps();
-            $table->softDeletes();
 
-            $table->foreign('pesanan_id')->references('id')->on('pesanans');
-            $table->foreign('toko_id')->references('id')->on('tokos');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
@@ -31,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('transaksis');
+        Schema::dropIfExists('pesanans');
     }
 };

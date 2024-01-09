@@ -4,8 +4,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\DetailProdukController;
-use App\Http\Controllers\DetailCategoryController;
 use App\Http\Controllers\KeranjangController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\TransaksiController;
@@ -36,21 +34,3 @@ Route::group(['middleware' => 'auth'], function () {
     // Buyer
     Route::get('/keranjang', [KeranjangController::class, 'index'])->name('keranjang');
 });
-
-// Route::get('/homepage', [HomeController::class, 'index']);
-// Route::get('/detail-category/{id}', [HomeController::class, 'detail_kategori']);
-// Route::get('/detail-category/{id}', [DetailCategoryController::class, 'detail_kategori']);
-// Route::get('/detail-product/{id}', [DetailProdukController::class, 'detail_produk'])->name('detailproduk');
-
-//seller
-
-// Route::get('/checkout', function () {
-//     return view('UserBuyer/checkout');
-// });
-// Route::get('/transaction', function () {
-//     return view('UserBuyer/history-transaction');
-// });
-
-// Route::get('/user-profile', function () {
-//     return view('UserBuyer/user-profile');
-// });
