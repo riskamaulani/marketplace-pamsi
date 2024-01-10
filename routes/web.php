@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\KeranjangController;
 use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\TokoController;
 use App\Http\Controllers\TransaksiController;
 
 // route for login register
@@ -33,4 +34,11 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Buyer
     Route::get('/keranjang', [KeranjangController::class, 'index'])->name('keranjang');
+    Route::get('/invoice', [TransaksiController::class, 'show'])->name('invoice');
+    Route::get('/store', [TokoController::class, 'index'])->name('store');
+
+    //coba-coba
+    Route::get('/checkout', [TransaksiController::class, 'checkout'])->name('checkout');
+
+    Route::get('/pencarian', [ProdukController::class, 'search'])->name('cari');
 });

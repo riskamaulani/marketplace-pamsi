@@ -11,13 +11,16 @@ class TransaksiController extends Controller
 {
     public function index()
     {
-        return match(Auth::user()->status) {
+        return match (Auth::user()->status) {
             UserStatus::ADMIN => $this->transaksiAdmin(),
             UserStatus::PEMBELI => $this->transaksiPembeli(),
             UserStatus::PENJUAL => $this->transaksiPenjual()
         };
     }
-
+    public function checkout(Transaksi $transaksi)
+    {
+        return view('pages.buyer.checkout');
+    }
     private function transaksiAdmin()
     {
         return view('pages.admin.transactions', [
@@ -56,7 +59,7 @@ class TransaksiController extends Controller
      */
     public function show(Transaksi $transaksi)
     {
-        //
+        return view('pages.buyer.invoice');
     }
 
     /**
