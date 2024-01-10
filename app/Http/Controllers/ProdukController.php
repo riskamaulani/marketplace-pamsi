@@ -32,4 +32,8 @@ class ProdukController extends Controller
     {
         //
     }
+    public function search(Produk $produk)
+    {
+        return view('pages.buyer.search-feature');
+    }
 }
