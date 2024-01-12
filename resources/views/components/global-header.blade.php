@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <a href="{{ route('home') }}"><img src="../assets/img/pamsi3.png" alt="" height="50px"></a>
+                <a href="{{ route('home') }}"><img src="../assets/img/pamsi3.png" alt="" style="height:3rem;width:auto;"></a>
             </div>
 
             <div class="col">
