@@ -60,11 +60,11 @@
                             </a>
                         </li>
 
-                        <li class="nav-item dropdown">
+                        <!-- <li class="nav-item dropdown">
                             <a class="nav-link nav-icon align-items-right" href="#" data-bs-toggle="dropdown">
                                 <i class="bi bi-bell"></i>
                                 <span class="badge bg-primary badge-number">4</span>
-                            </a><!-- End Notification Icon -->
+                            </a>
 
                             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
                                 <li class="dropdown-header">
@@ -133,7 +133,7 @@
                                     <a href="#">Show all notifications</a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> -->
                     </ul>
                 </nav>
             </div>

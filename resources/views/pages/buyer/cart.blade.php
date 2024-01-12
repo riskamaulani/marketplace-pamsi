@@ -19,7 +19,7 @@
 
                     <div class="card-body">
 
-                        <hr class="line-divider">
+
                         <div class="row  mx-2">
                             <div class="row">
                                 <div class="form-check">
@@ -54,10 +54,10 @@
 
 
             <div class="col-sm-4">
-                <div class="card cart overflow-auto">
+                <div class="card  overflow-auto">
 
                     <div class="card-body">
-                        <h1 class="card-title-ringkasan">Ringkasan</h1>
+                        <h1 class="card-title-ringkasan" style="font-weight: 600;">Ringkasan</h1>
                         <div class="row">
                             <div class="col">
                                 <h6 style="font-weight: bold;">Jumlah Produk</h6>

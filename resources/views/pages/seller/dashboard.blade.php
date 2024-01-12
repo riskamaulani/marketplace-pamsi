@@ -407,6 +407,16 @@
                                                                         </div>
                                                                     </div>
 
+                                                                    <div class="row mb-3">
+                                                                        <label class="col-sm-8 col-form-label"></label>
+                                                                        <div class="col-sm-4">
+                                                                            <a href="{{ route('invoice') }}" class="btn btn-primary btn-sm" title="Invoice" style="color:white;">
+                                                                                <i class="bi bi-receipt" style="color:white;"></i>
+                                                                                Cetak Invoice
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+
 
 
 
@@ -478,10 +488,7 @@
                                             <div class="modal-body">
                                                 <div class="row">
                                                     <div class="col-xl">
-                                                        <div class="image-detail-product-big">
-                                                            <img src="assets/img/pancake.jpg" class="rounded mx-auto d-block my-2" height="400px" width="auto">
 
-                                                        </div>
                                                         <div class="col-xl">
                                                             <form>
 
@@ -490,7 +497,7 @@
                                                                     <label for="noproduct" class="col-sm-4 col-form-label">No.
                                                                         Produk</label>
                                                                     <div class="col-sm-8">
-                                                                        <input name="noproduct" type="text" class="form-control" id="noproduct" value="PAN1" />
+                                                                        <input name="noproduct" type="text" class="form-control" id="noproduct" value="PAN1" disabled />
                                                                     </div>
                                                                 </div>
 
@@ -498,14 +505,14 @@
                                                                     <label for="name" class="col-sm-4 col-form-label">Nama
                                                                         Produk</label>
                                                                     <div class="col-sm-8">
-                                                                        <input name="name" type="text" class="form-control" id="name" value="Pancake Keju" />
+                                                                        <input name="name" type="text" class="form-control" id="name" value="Pancake Keju" disabled />
                                                                     </div>
                                                                 </div>
 
                                                                 <div class="row mb-3">
                                                                     <label for="price" class="col-sm-4 col-form-label">Harga</label>
                                                                     <div class="col-sm-8">
-                                                                        <input name="price" type="text" class="form-control" id="price" value="10.000" />
+                                                                        <input name="price" type="text" class="form-control" id="price" value="10.000" disabled />
                                                                     </div>
                                                                 </div>
 
@@ -513,7 +520,7 @@
                                                                 <div class="row mb-3">
                                                                     <label for="sold" class="col-sm-4 col-form-label">Terjual</label>
                                                                     <div class="col-sm-8">
-                                                                        <input name="sold" type="text" class="form-control" id="sold" value="10" />
+                                                                        <input name="sold" type="text" class="form-control" id="sold" value="10" disabled />
                                                                     </div>
                                                                 </div>
 

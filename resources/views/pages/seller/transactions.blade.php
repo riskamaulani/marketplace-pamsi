@@ -39,12 +39,12 @@
                             <tbody>
                                 <tr>
                                     <th scope="row">1</th>
-                                    <th scope="row">PO12345678</th>
-                                    <td>
+                                    <td scope="row">PO12345678</td>
+                                    <th>
 
                                         <a href="" data-bs-toggle="modal" data-bs-target="#modalTransactions">Maesaroh</a>
 
-                                    </td>
+                                    </th>
                                     <td>08123456789</td>
                                     <td>Pancake Keju (2)</td>
                                     <td>Rp<span>20.000</span></td>
@@ -157,6 +157,17 @@
                                                                     </select>
                                                                 </div>
                                                             </div>
+
+                                                            <div class="row mb-3">
+                                                                <label class="col-sm-8 col-form-label"></label>
+                                                                <div class="col-sm-4">
+                                                                    <a href="{{ route('invoice') }}" class="btn btn-primary btn-sm" title="Invoice" style="color:white;">
+                                                                        <i class="bi bi-receipt" style="color:white;"></i>
+                                                                        Cetak Invoice
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+
 
                                                         </form>
 

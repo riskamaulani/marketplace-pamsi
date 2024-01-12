@@ -16,7 +16,7 @@
             <div class="col">
                 <div class="card">
                     <div class="card-body py-3">
-                        <a href="">
+                        <a href="{{ route('invoice') }}">
                             <div class="row  mx-2">
                                 <div class="row" style="font-weight: bold;">
                                     Fluffy Pancake Store

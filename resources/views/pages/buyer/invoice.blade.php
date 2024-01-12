@@ -65,28 +65,28 @@
                     </div>
 
                     <div class="row mt-5">
-                        <div class="col-2">
+                        <div class="col-3">
                             <h6>Catatan </h6>
                         </div>
-                        <div class="col-10">
+                        <div class="col-9">
                             <p style="font-weight:bold">: ksjdhasjdaskjdajsdh</p>
                         </div>
 
                     </div>
                     <div class="row">
-                        <div class="col-2">
+                        <div class="col-3">
                             <h6>Jenis Pengiriman </h6>
                         </div>
-                        <div class="col-10">
+                        <div class="col-9">
                             <p style="font-weight:bold">: ksjdhasjdaskjdajsdh</p>
                         </div>
 
                     </div>
                     <div class="row">
-                        <div class="col-2">
+                        <div class="col-3">
                             <h6>Alamat Pengiriman </h6>
                         </div>
-                        <div class="col-10">
+                        <div class="col-9">
                             <p style="font-weight:bold">: ksjdhasjdaskjdajsdh</p>
                         </div>
 
