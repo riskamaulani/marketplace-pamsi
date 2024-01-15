@@ -16,8 +16,11 @@ class Produk extends Model
     protected $guarded = [];
 
     protected $attributes = [
+        'nama' => null,
+        'harga' => null,
         'deskripsi' => null,
-        'stok' => 0,
+        'gambar' => null,
+        'terjual' => 0,
         'status' => ProdukStatus::HABIS
     ];
 

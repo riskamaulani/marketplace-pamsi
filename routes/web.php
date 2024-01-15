@@ -23,6 +23,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/password', [AuthController::class, 'changePassword'])->name('change_password');
 
     Route::get('/', [HomeController::class, 'index'])->name('home');
+
+
     Route::get('/profil', [UserController::class, 'profil'])->name('profil');
     Route::get('/transaksi', [TransaksiController::class, 'index'])->name('transaksi');
 

@@ -8,7 +8,7 @@ use Haruncpi\LaravelIdGenerator\IdGenerator;
 class Kategori extends Model
 {
     // use HasFactory;
-
+    protected $guarded = [];
     public $incrementing = false;
 
     public static function boot()
