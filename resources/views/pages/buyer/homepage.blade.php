@@ -62,10 +62,12 @@
                 <h1 class="card-title ">Kategori</h1>
                 <div class="row">
                     <div class="col">
+
                         @foreach ($kategori as $kt)
                         <a href="">
-                            <button type="button" class="btn btn-success my-1 px-3">{{ $kt->nama }}</button>
-
+                            <button type="button" class="btn btn-success my-1 px-3">
+                                {{ $kt->nama }}
+                            </button>
                         </a>
                         @endforeach
 

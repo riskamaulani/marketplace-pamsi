@@ -7,14 +7,10 @@ use Illuminate\Http\Request;
 
 class KategoriController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
-
         $kategori = Kategori::all();
-
         return view('pages.buyer.homepage', compact('kategori'));
     }
 
