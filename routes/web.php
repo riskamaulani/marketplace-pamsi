@@ -8,6 +8,7 @@ use App\Http\Controllers\KeranjangController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\TokoController;
 use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\KategoriController;
 
 // route for login register
 Route::controller(AuthController::class)->group(function () {
@@ -23,6 +24,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/password', [AuthController::class, 'changePassword'])->name('change_password');
 
     Route::get('/', [HomeController::class, 'index'])->name('home');
+    Route::get('/kategori', [KategoriController::class, 'index'])->name('kategori.index');
 
 
     Route::get('/profil', [UserController::class, 'profil'])->name('profil');

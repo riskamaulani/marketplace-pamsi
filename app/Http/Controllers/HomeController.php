@@ -13,12 +13,15 @@ use App\Models\PenawaranModel;
 use App\Models\TransaksiModel;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\KategoriController;
 
 class HomeController extends Controller
 {
+
+
     public function index()
     {
-        return match(Auth::user()->status) {
+        return match (Auth::user()->status) {
             UserStatus::ADMIN => $this->homeAdmin(),
             UserStatus::PEMBELI => $this->homePembeli(),
             UserStatus::PENJUAL => $this->homePenjual()

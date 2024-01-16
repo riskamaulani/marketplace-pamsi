@@ -15,7 +15,6 @@ class ProdukController extends Controller
 
     public function store(ProductStoreRequest $request)
     {
-        dd($request);
     }
 
     public function show(Produk $produk)
