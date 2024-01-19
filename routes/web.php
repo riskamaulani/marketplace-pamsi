@@ -32,16 +32,16 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Admmin
     Route::get('/user', [UserController::class, 'index'])->name('user');
+    Route::get('/katalog', [ProdukController::class, 'catalog'])->name('catalog');
 
     // Seller
     Route::get('/produk', [ProdukController::class, 'index'])->name('produk');
-    Route::get('/produk', [ProdukController::class, 'create'])->name('produk.create');
-    Route::post('/produk', [ProdukController::class, 'store'])->name('produk.store');
+
 
     // Buyer
     Route::get('/keranjang', [KeranjangController::class, 'index'])->name('keranjang');
     Route::get('/invoice', [TransaksiController::class, 'show'])->name('invoice');
-    Route::get('/store', [TokoController::class, 'index'])->name('store');
+    Route::get('/toko', [TokoController::class, 'index'])->name('store');
 
     //coba-coba
     Route::get('/checkout', [TransaksiController::class, 'checkout'])->name('checkout');

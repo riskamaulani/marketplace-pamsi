@@ -16,7 +16,7 @@
             <div class="card">
 
                 <div class="card-body profile-card pt-4 px-4 d-flex flex-column align-items-center">
-                    <img src="assets/img/profil-pict.jpg" alt="Profile" class="rounded py-auto px-auto" style=" width: 100%; height:auto" />
+                    <img src="assets/img/fluffy.png" alt="Profile" class="rounded py-auto px-auto" style=" width: 100%; height:auto" />
                 </div>
                 <div class="badge bg-success">Buka</div>
             </div>

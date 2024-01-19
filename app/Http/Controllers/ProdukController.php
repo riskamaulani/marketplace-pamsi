@@ -50,4 +50,8 @@ class ProdukController extends Controller
     {
         return view('pages.buyer.search-feature');
     }
+    public function catalog(Produk $produk)
+    {
+        return view('pages.admin.catalog-product');
+    }
 }

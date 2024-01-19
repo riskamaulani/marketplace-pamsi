@@ -15,12 +15,12 @@
         </li>
 
         @can('viewAny', 'App\Models\Produk')
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('produk') }}">
-                    <i class="bi bi-bag"></i>
-                    <span>Data Produk</span>
-                </a>
-            </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{ route('produk') }}">
+                <i class="bi bi-bag"></i>
+                <span>Data Produk</span>
+            </a>
+        </li>
         @endcan
 
         <li class="nav-item">
@@ -31,19 +31,30 @@
         </li>
 
         @can('viewAny', 'App\Models\User')
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('user', ['r' => 'penjual']) }}">
-                    <i class="bi bi-shop"></i>
-                    <span>Data Penjual</span>
-                </a>
-            </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{ route('user', ['r' => 'penjual']) }}">
+                <i class="bi bi-shop"></i>
+                <span>Data Penjual</span>
+            </a>
+        </li>
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('user', ['r' => 'pembeli']) }}">
-                    <i class="bi bi-people"></i>
-                    <span>Data Pengguna</span>
-                </a>
-            </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{ route('user', ['r' => 'pembeli']) }}">
+                <i class="bi bi-people"></i>
+                <span>Data Pengguna</span>
+            </a>
+        </li>
         @endcan
+
+        @can('catalog', 'App\Models\Produk')
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{ route('catalog') }}">
+                <i class="bi bi-bag"></i>
+                <span>Katalog Produk</span>
+            </a>
+        </li>
+        @endcan
+
+
     </ul>
 </aside>

@@ -10,4 +10,9 @@ class ProdukPolicy
     {
         return $user->status->isPenjual();
     }
+
+    public function catalog(User $user)
+    {
+        return $user->status->isAdmin();
+    }
 }

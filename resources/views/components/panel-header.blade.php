@@ -5,7 +5,7 @@
             <img src="assets/img/pamsi.jpeg" alt="Pamsi-Marketplace">
 
         </a>
-        <i class="bi bi-list toggle-sidebar-btn"></i>
+        <!-- <i class="bi bi-list toggle-sidebar-btn"></i> -->
     </div><!-- End Logo -->
 
     <div class="search-bar">
@@ -26,8 +26,7 @@
 
             <li class="nav-item dropdown pe-3">
                 <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                    <span
-                        class="d-none d-md-block dropdown-toggle ps-2">{{ Auth::user()->status->isAdmin() ? 'Admin' : 'Toko' }}</span>
+                    <span class="d-none d-md-block dropdown-toggle ps-2">{{ Auth::user()->status->isAdmin() ? 'Admin' : 'Toko' }}</span>
                 </a>
 
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
