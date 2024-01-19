@@ -42,81 +42,152 @@
 
             <div class="card product-store">
                 <div class="col px-3 py-3">
+                    <div class="row row-cols-2 row-cols-lg-6 g-2 g-lg-6">
 
-                    <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3 ">
-                        <div class="card ">
-                            <a href="detail-product">
-                                <img src="assets/img/pancake.jpg" class="card-img-top" alt="Gambar Pancake">
-                                <div class="card-body-product">
+                        <div class="col">
+                            <div class="card">
+                                <a href="">
+                                    <img src="assets/img/pancake.jpg" class="card-img-top" alt="Gambar pancake">
+                                    <div class="card-body-product">
 
-                                    <h6 class="card-title-product">
-                                        Nama Produk
-                                    </h6>
+                                        <h6 class="card-title-product">
+                                            pancake
+                                        </h6>
 
-                                    <p class="card-text">Rp. 10.000</p>
-                                </div>
-                            </a>
-                        </div><!-- End Pancake -->
-                        <div class="card ">
-                            <a href="detail-product">
-                                <img src="assets/img/pancake.jpg" class="card-img-top" alt="Gambar Pancake">
-                                <div class="card-body-product">
 
-                                    <h6 class="card-title-product">
-                                        Nama Produk
-                                    </h6>
+                                        <p class="card-text">Rp 10.000</p>
+                                    </div>
+                                </a>
+                            </div>
 
-                                    <p class="card-text">Rp. 10.000</p>
-                                </div>
-                            </a>
-                        </div><!-- End Pancake -->
-                        <div class="card ">
-                            <a href="detail-product">
-                                <img src="assets/img/pancake.jpg" class="card-img-top" alt="Gambar Pancake">
-                                <div class="card-body-product">
+                        </div>
 
-                                    <h6 class="card-title-product">
-                                        Nama Produk
-                                    </h6>
+                        <div class="col">
+                            <div class="card">
+                                <a href="">
+                                    <img src="assets/img/pancake.jpg" class="card-img-top" alt="Gambar pancake">
+                                    <div class="card-body-product">
 
-                                    <p class="card-text">Rp. 10.000</p>
-                                </div>
-                            </a>
-                        </div><!-- End Pancake -->
-                        <div class="card ">
-                            <a href="detail-product">
-                                <img src="assets/img/pancake.jpg" class="card-img-top" alt="Gambar Pancake">
-                                <div class="card-body-product">
+                                        <h6 class="card-title-product">
+                                            pancake
+                                        </h6>
 
-                                    <h6 class="card-title-product">
-                                        Nama Produk
-                                    </h6>
 
-                                    <p class="card-text">Rp. 10.000</p>
-                                </div>
-                            </a>
-                        </div><!-- End Pancake -->
-                        <div class="card ">
-                            <a href="detail-product">
-                                <img src="assets/img/pancake.jpg" class="card-img-top" alt="Gambar Pancake">
-                                <div class="card-body-product">
+                                        <p class="card-text">Rp 10.000</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
 
-                                    <h6 class="card-title-product">
-                                        Nama Produk
-                                    </h6>
+                        <div class="col">
+                            <div class="card">
+                                <a href="">
+                                    <img src="assets/img/pancake.jpg" class="card-img-top" alt="Gambar pancake">
+                                    <div class="card-body-product">
 
-                                    <p class="card-text">Rp. 10.000</p>
-                                </div>
-                            </a>
-                        </div><!-- End Pancake -->
+                                        <h6 class="card-title-product">
+                                            pancake
+                                        </h6>
+
+
+                                        <p class="card-text">Rp 10.000</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="card">
+                                <a href="">
+                                    <img src="assets/img/pancake.jpg" class="card-img-top" alt="Gambar pancake">
+                                    <div class="card-body-product">
+
+                                        <h6 class="card-title-product">
+                                            pancake
+                                        </h6>
+
+
+                                        <p class="card-text">Rp 10.000</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="card">
+                                <a href="">
+                                    <img src="assets/img/pancake.jpg" class="card-img-top" alt="Gambar pancake">
+                                    <div class="card-body-product">
+
+                                        <h6 class="card-title-product">
+                                            pancake
+                                        </h6>
+
+
+                                        <p class="card-text">Rp 10.000</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="card">
+                                <a href="">
+                                    <img src="assets/img/pancake.jpg" class="card-img-top" alt="Gambar pancake">
+                                    <div class="card-body-product">
+
+                                        <h6 class="card-title-product">
+                                            pancake
+                                        </h6>
+
+
+                                        <p class="card-text">Rp 10.000</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="card">
+                                <a href="">
+                                    <img src="assets/img/pancake.jpg" class="card-img-top" alt="Gambar pancake">
+                                    <div class="card-body-product">
+
+                                        <h6 class="card-title-product">
+                                            pancake
+                                        </h6>
+
+
+                                        <p class="card-text">Rp 10.000</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="card">
+                                <a href="">
+                                    <img src="assets/img/pancake.jpg" class="card-img-top" alt="Gambar pancake">
+                                    <div class="card-body-product">
+
+                                        <h6 class="card-title-product">
+                                            pancake
+                                        </h6>
+
+
+                                        <p class="card-text">Rp 10.000</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+
 
                     </div>
 
                 </div>
 
             </div>
-
         </div>
     </div>
-</div>
-@endsection
+    @endsection
