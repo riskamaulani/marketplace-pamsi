@@ -35,6 +35,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Seller
     Route::get('/produk', [ProdukController::class, 'index'])->name('produk');
+    Route::get('/produk', [ProdukController::class, 'create'])->name('produk.create');
+    Route::post('/produk', [ProdukController::class, 'store'])->name('produk.store');
 
     // Buyer
     Route::get('/keranjang', [KeranjangController::class, 'index'])->name('keranjang');

@@ -43,7 +43,9 @@
 
                                                         </div>
                                                         <div class="col-xl">
-                                                            <form>
+
+                                                            <form method="POST">
+                                                                @csrf
                                                                 <div class="row mb-3">
                                                                     <label for="profileImage" class="col-sm-4 col-form-label">Gambar
                                                                         Profil</label>
@@ -68,17 +70,16 @@
                                                                     </div> --}}
 
                                                                 <div class="row mb-3">
-                                                                    <label for="name" class="col-sm-4 col-form-label">Nama
-                                                                        Produk</label>
+                                                                    <label for="name" class="col-sm-4 col-form-label">Nama Produk</label>
                                                                     <div class="col-sm-8">
-                                                                        <input name="name" type="text" class="form-control" id="name" />
+                                                                        <input name="nama" type="text" class="form-control" id="name" required />
                                                                     </div>
                                                                 </div>
 
                                                                 <div class="row mb-3">
                                                                     <label for="harga" class="col-sm-4 col-form-label">Harga</label>
                                                                     <div class="col-sm-8">
-                                                                        <input name="harga" type="text" class="form-control" id="harga" />
+                                                                        <input name="harga" type="text" class="form-control" id="harga" required />
                                                                     </div>
                                                                 </div>
 
@@ -139,7 +140,7 @@
                                                                     <label for="deskripsi" class="col-sm-4 col-form-label">Detail
                                                                         Produk</label>
                                                                     <div class="col-sm-8">
-                                                                        <textarea name="deskripsi" class="form-control" style="height: 100px">#</textarea>
+                                                                        <textarea name="deskripsi" class="form-control" style="height: 100px" required>#</textarea>
                                                                     </div>
                                                                 </div>
 
@@ -163,8 +164,8 @@
                                             </div>
 
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                                                <button type="button" class="btn btn-primary">Simpan</button>
+                                                <button type="button " class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                                <button type="submit" class="btn btn-primary">Simpan</button>
                                             </div>
                                         </div>
                                     </div>

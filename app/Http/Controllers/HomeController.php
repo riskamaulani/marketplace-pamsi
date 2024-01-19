@@ -8,7 +8,7 @@ use App\Models\ProdukModel;
 use App\Models\TeratasModel;
 
 use Illuminate\Http\Request;
-use App\Models\KategoriModel;
+use App\Models\Kategori;
 use App\Models\PenawaranModel;
 use App\Models\TransaksiModel;
 use Illuminate\Support\Facades\DB;
@@ -17,8 +17,6 @@ use App\Http\Controllers\KategoriController;
 
 class HomeController extends Controller
 {
-
-
     public function index()
     {
         return match (Auth::user()->status) {
@@ -48,7 +46,7 @@ class HomeController extends Controller
 
     private function homePembeli()
     {
-        $data['kategori'] = [];
+        $data['kategori'] = Kategori::all();;
         $data['produk'] = [];
         $data['teratas'] = [];
         $data['penawaran'] = [];
