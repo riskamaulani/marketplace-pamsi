@@ -70,6 +70,13 @@
                                                             </div>
 
                                                             <div class="row mb-3">
+                                                                <label for="name" class="col-sm-4 col-form-label">Nama Toko</label>
+                                                                <div class="col-sm-8">
+                                                                    <input name="store" type="text" class="form-control" id="store" value="Fluffy Store" disabled />
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row mb-3">
                                                                 <label for="name" class="col-sm-4 col-form-label">Nama Produk</label>
                                                                 <div class="col-sm-8">
                                                                     <input name="name" type="text" class="form-control" id="name" value="Pancake Keju" disabled />
