@@ -19,7 +19,7 @@ Route::controller(AuthController::class)->group(function () {
     Route::get('/logout', 'logout')->name('logout')->middleware('auth');
 });
 
-// home page all user
+// all user
 Route::group(['middleware' => 'auth'], function () {
     Route::post('/password', [AuthController::class, 'changePassword'])->name('change_password');
 
@@ -36,6 +36,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Seller
     Route::get('/produk', [ProdukController::class, 'index'])->name('produk');
+    Route::post('/produk', [ProdukController::class, 'store'])->name('produk.store');
+    Route::put('/produk/{produk}', [ProdukController::class, 'update'])->name('produk.update');
 
 
     // Buyer
