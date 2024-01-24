@@ -40,7 +40,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/produk', [ProdukController::class, 'store'])->name('produk.store');
     Route::put('/produk/{produk}', [ProdukController::class, 'update'])->name('produk.update');
 
-    Route::post('/profil-toko', [UserController::class, 'profilToko'])->name('profil.toko');
+    Route::post('/profil-toko/{toko}', [UserController::class, 'profilToko'])->name('profil.toko');
 
 
     // Buyer

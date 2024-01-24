@@ -64,6 +64,7 @@ class UserController extends Controller
             'toko' => auth()->user()->toko
         ]);
     }
+
     public function add(RequestsAddSellerRequest $request)
     {
         try {
@@ -97,19 +98,6 @@ class UserController extends Controller
     public function profilToko(ProfilTokoUpdateRequest $request, Toko $toko)
     {
         try {
-            if ($toko->foto == null) {
-                // save image first
-                $foto = $request->file('foto')->store('images-toko');
-
-                // store data
-                Toko::create([
-                    'foto' => $foto,
-                    'nama' => $request->nama,
-                    'deskripsi' => $request->deskripsi,
-                    'status' => $request->status,
-                ]);
-            }
-
             // update image if user want to update
             if ($request->file('foto')) {
                 if ($toko->foto) {
@@ -118,17 +106,26 @@ class UserController extends Controller
                 $toko->foto = $request->file('foto')->store('images-toko');
             }
 
+            $bukas = $request->input('buka', []);
+            $buka = [in_array('0', $bukas), in_array('1', $bukas), in_array('2', $bukas), in_array('3', $bukas), in_array('4', $bukas), in_array('5', $bukas), in_array('6', $bukas)];
+
             // update data for toko model
             $toko->nama = $request->nama;
+            $toko->pengelola = $request->pengelola ?? '[]';
+            $toko->buka = $buka;
             $toko->deskripsi = $request->deskripsi;
-            $toko->pengelola = $request->pengelola;
             $toko->status = $request->status;
+
+            $toko->user->nomor_hp = $request->phone;
+            $toko->user->email = $request->email;
+            $toko->user->save();
 
             // save to database
             $toko->save();
         } catch (\Throwable $th) {
-            notify()->error('Update Profil Toko Gagal. ' . $th->getMessage(), 'Gagal!');
-            return back();
+            dd($th->getMessage());
+            // notify()->error('Update Profil Toko Gagal. ' . $th->getMessage(), 'Gagal!');
+            // return back();
         }
 
         notify()->success('Update Profil Toko berhasil.', 'Berhasil!');

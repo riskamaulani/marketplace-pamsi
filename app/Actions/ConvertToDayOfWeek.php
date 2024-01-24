@@ -11,7 +11,7 @@ class ConvertToDayOfWeek
         $result = null; $status = false;
         foreach($data as $key=>$value) {
             if($value) {
-                if ($key != array_key_last($data) && $status) {
+                if ($key != array_key_last($data)+1 && $status) {
                     $result .= ' | ';
                 } else {
                     $status = true;

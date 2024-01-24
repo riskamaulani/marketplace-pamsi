@@ -22,11 +22,10 @@ class ProfilTokoUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'foto' => 'required|file|image',
+            'foto' => 'file|image',
             'nama' => 'required',
             'deskripsi' => 'required',
             'status' => 'required',
-
         ];
     }
 }
