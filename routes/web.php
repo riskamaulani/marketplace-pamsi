@@ -32,12 +32,15 @@ Route::group(['middleware' => 'auth'], function () {
 
     // Admmin
     Route::get('/user', [UserController::class, 'index'])->name('user');
+    Route::post('/seller', [UserController::class, 'add'])->name('seller.add');
     Route::get('/katalog', [ProdukController::class, 'catalog'])->name('catalog');
 
     // Seller
     Route::get('/produk', [ProdukController::class, 'index'])->name('produk');
     Route::post('/produk', [ProdukController::class, 'store'])->name('produk.store');
     Route::put('/produk/{produk}', [ProdukController::class, 'update'])->name('produk.update');
+
+    Route::post('/profil-toko', [UserController::class, 'profilToko'])->name('profil.toko');
 
 
     // Buyer

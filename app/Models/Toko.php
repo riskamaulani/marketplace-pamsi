@@ -24,7 +24,7 @@ class Toko extends Model
     ];
 
     protected $casts = [
-        'pengelola' => 'array',
+
         'buka' => 'array',
         'status' => TokoStatus::class
     ];

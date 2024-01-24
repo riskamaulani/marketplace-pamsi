@@ -38,20 +38,29 @@
                                                 <div class="row">
                                                     <div class="col-xl">
                                                         <div class="col-xl">
-                                                            <form>
+                                                            <form action="{{ route('seller.add') }}" method="POST" enctype="multipart/form-data" autocomplete="off">
+                                                                @csrf
                                                                 <div class="row mb-3">
-                                                                    <label class="col-sm-4 col-form-label">Nama
-                                                                        Toko</label>
+                                                                    <label for="name" class="col-sm-4 col-form-label">
+                                                                        Nama Toko
+                                                                    </label>
                                                                     <div class="col-sm-8">
-                                                                        <input type="text" class="form-control" value="">
+                                                                        <input name="nama" type="text" class="form-control" placeholder="Nama Toko" required>
                                                                     </div>
                                                                 </div>
 
                                                                 <div class="row mb-3">
-                                                                    <label class="col-sm-4 col-form-label">Username Toko</label>
+                                                                    <label for="username" class="col-sm-4 col-form-label">
+                                                                        Username Toko
+                                                                    </label>
                                                                     <div class="col-sm-8">
-                                                                        <input type="text" class="form-control" value="">
+                                                                        <input name="username" type="text" class="form-control" placeholder="Username Toko" required>
                                                                     </div>
+                                                                </div>
+
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                                                    <button type="submit" class="btn btn-primary">Tambah Penjual</button>
                                                                 </div>
 
 
@@ -61,10 +70,7 @@
                                                 </div>
 
                                             </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                                                <button type="button" class="btn btn-primary">Tambah Penjual</button>
-                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -88,19 +94,16 @@
                                 <tr>
                                     <th scope="row">{{ $loop->iteration }}</th>
                                     <td>
-                                        {{-- <a href=""
-                                                    onclick="edit_data_seller(
+                                        <a href="" onclick="edit_data_seller(
                                            '{{ $user->toko->nama }}',
                                         'assets/img/{{ $user->toko->foto }}',
                                         '{{ $user->toko->deskripsi }}',
-                                        '{{ $user->toko->pengelola[0] }}',
+                                        '{{ $user->toko}}',
                                         '{{ $user->produks_count }}',
                                         '{{ $user->nomor_hp }}',
                                         '{{ $user->email }}'
-                                        )"
-                                        data-bs-toggle="modal"
-                                        data-bs-target="#modalSellers">{{ $user->toko->nama }}</a> --}}
-                                        {{ $user->toko->nama }}
+                                        )" data-bs-toggle="modal" data-bs-target="#modalSellers">{{ $user->toko->nama }}</a>
+
                                     </td>
                                     <td>{{ $user->nomor_hp ?? '-' }}</td>
                                     <td>{{ $user->produks_count }}</td>
