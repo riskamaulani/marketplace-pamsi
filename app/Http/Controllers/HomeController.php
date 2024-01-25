@@ -14,6 +14,7 @@ use App\Models\TransaksiModel;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\KategoriController;
+use App\Models\Produk;
 
 class HomeController extends Controller
 {
@@ -47,7 +48,7 @@ class HomeController extends Controller
     private function homePembeli()
     {
         $data['kategori'] = Kategori::all();;
-        $data['produk'] = [];
+        $data['produk'] = Produk::all();
         $data['teratas'] = [];
         $data['penawaran'] = [];
         return view('pages.buyer.homepage', $data);

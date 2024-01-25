@@ -21,6 +21,10 @@ class TransaksiController extends Controller
     {
         return view('pages.buyer.checkout');
     }
+    public function cek(Transaksi $transaksi)
+    {
+        return view('pages.buyer.detail_product');
+    }
     private function transaksiAdmin()
     {
         return view('pages.admin.transactions', [

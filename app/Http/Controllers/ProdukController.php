@@ -34,9 +34,8 @@ class ProdukController extends Controller
                 'kategori_id' => $request->kategori_id,
                 'order_type' => $request->order_type
             ]);
-
         } catch (\Throwable $th) {
-            notify()->error('Penambahan produk gagal. '. $th->getMessage(), 'Gagal!');
+            notify()->error('Penambahan produk gagal. ' . $th->getMessage(), 'Gagal!');
             return back();
         }
 
@@ -44,9 +43,11 @@ class ProdukController extends Controller
         return redirect(route('produk'));
     }
 
-    public function show(Produk $produk)
+    public function show($id)
     {
-        //
+        $produk = Produk::findOrFail($id);
+
+        return view('pages.buyer.detail_product', compact('produk'));
     }
 
     public function update(ProductUpdateRequest $request, Produk $produk)
@@ -70,7 +71,7 @@ class ProdukController extends Controller
             // save to database
             $produk->save();
         } catch (\Throwable $th) {
-            notify()->error('Update produk gagal. '. $th->getMessage(), 'Gagal!');
+            notify()->error('Update produk gagal. ' . $th->getMessage(), 'Gagal!');
             return back();
         }
 

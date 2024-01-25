@@ -40,13 +40,16 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/produk', [ProdukController::class, 'store'])->name('produk.store');
     Route::put('/produk/{produk}', [ProdukController::class, 'update'])->name('produk.update');
 
-    Route::post('/profil-toko', [UserController::class, 'profilToko'])->name('profil.toko');
+    Route::post('/profil-toko/{toko}', [UserController::class, 'profilToko'])->name('profil.toko');
 
 
     // Buyer
+    Route::get('/detail_product/{id}', [ProdukController::class, 'show'])->name('produk.detail');
     Route::get('/keranjang', [KeranjangController::class, 'index'])->name('keranjang');
     Route::get('/invoice', [TransaksiController::class, 'show'])->name('invoice');
     Route::get('/toko', [TokoController::class, 'index'])->name('store');
+
+
 
     //coba-coba
     Route::get('/checkout', [TransaksiController::class, 'checkout'])->name('checkout');

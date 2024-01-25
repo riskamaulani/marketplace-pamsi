@@ -6,20 +6,21 @@
 <main class="main detail-product-buyer">
     <div class="container">
         <div class="row">
+
             <div class="col-lg-3">
 
                 <div class="card detail-product-buyer  px-1 py-1  d-flex flex-column">
-                    <img src="../assets/img/{{ $produk->gambar_produk }}" alt="..." class="rounded py-auto px-auto" style=" width: 100%; height:auto">
+                    <img src="../assets/img/pancake.jpg" alt="..." class="rounded py-auto px-auto" style=" width: 100%; height:auto">
                 </div>
                 <div class="card detail-product-buyer overflow-auto ">
                     <div class="row  py-2 mx-auto">
                         <div class="col-4  d-flex flex-column my-auto mx-auto">
-                            <img src="../assets/img/{{ $produk->penjual->gambar_toko }}" alt="" class="rounded-circle img-fluid mb-1" style="width: 100%; height:auto">
+                            <img src="../assets/img/pancake.jpg" alt="" class="rounded-circle img-fluid mb-1" style="width: 100%; height:auto">
                             <span class="badge bg-success">Buka</span>
                         </div>
                         <div class="col-8 ">
                             <a href="">
-                                <h1 class="card-title ">{{ $produk->penjual->nama_toko }}</h1>
+                                <h1 class="card-title ">nama toko</h1>
                             </a>
 
 
@@ -27,6 +28,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="col-lg-5">
                 <div class="card detail-product-buyer overflow-auto ">
 
@@ -37,13 +39,13 @@
                                 <span class="badge bg-success mt-4 me-2">Tersedia</span>
                             </div>
                             <div class="col-9">
-                                <h1 class="card-title ">{{ $produk->nama_produk }}</h1>
+                                <h1 class="card-title ">nama produk</h1>
                             </div>
 
 
                         </div>
                         <div class="row price-detail-product-buyer">
-                            <h4 style="font-weight: bold;">Rp. {{ number_format($produk->harga_produk, 0) }}</h4>
+                            <h4 style="font-weight: bold;">Rp. 10000</h4>
                         </div>
                         <div class="row sold-detail-product-buyer">
                             <p style="font-size: small;">Terjual 50</p>
@@ -83,12 +85,13 @@
                             <p>Jenis Pemesanan : <span>Pre-Order</span></p>
                             <p>Jadwal Pengantaran : <span>Senin, Rabu, Jumat</span></p>
                             <p>Detail Produk : <br>
-                                <span> {{ $produk->deskripsi }}</span>
+                                <span> deskipsi</span>
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
+
             <div class="col-lg-4">
                 <div class="card detail-product-buyer overflow-auto px-3 ">
                     <h1 class="card-title ">Atur Pesanan</h1>
@@ -96,11 +99,11 @@
 
                     <div class="row mb-2">
                         <div class="col-4">
-                            <img src="../assets/img/{{ $produk->gambar_produk }}" alt="" class="rounded float-left" style="width: 100%; height:auto">
+                            <img src="../assets/img/pancake.jpg" alt="" class="rounded float-left" style="width: 100%; height:auto">
                         </div>
                         <div class="col-8 ">
 
-                            <h6 class="text-left">{{ $produk->nama_produk }}</h6>
+                            <h6 class="text-left">nama produk</h6>
 
 
                         </div>
@@ -118,20 +121,14 @@
 
 
                     <div class="submit-order mb-3 d-grid gap-1 d-md-flex justify-content-md-end">
-                        <input class="btn btn-secondary " type="submit" value="Keranjang">
+                        <button class="btn btn-secondary " type="submit">Keranjang</button>
+                        <button class="btn btn-primary" type="submit">Pesan Sekarang</button>
 
-                        <input class="btn btn-primary" type="submit" value="Pesan Sekarang">
                     </div>
 
                 </div>
             </div>
         </div>
 
-
-
-    </div>
-
-
-    </div>
 </main>
 @endsection
