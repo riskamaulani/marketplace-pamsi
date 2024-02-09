@@ -14,11 +14,19 @@
             </a>
         </li>
 
-        @can('viewAny', 'App\Models\Produk')
+        @can('viewAny',  'App\Models\Produk')
         <li class="nav-item">
             <a class="nav-link collapsed" href="{{ route('produk') }}">
                 <i class="bi bi-bag"></i>
                 <span>Data Produk</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{ route('ulasan') }}">
+                <i class="bi bi-star-fill"></i>
+                <span>Ulasan Produk</span>
+                
             </a>
         </li>
         @endcan
@@ -54,6 +62,8 @@
             </a>
         </li>
         @endcan
+
+       
 
 
     </ul>

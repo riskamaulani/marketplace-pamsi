@@ -68,7 +68,7 @@
                             <div class="col">
                                 <h6 style="font-weight: bold;">Total Harga</h6>
                             </div>
-                            <div class="col d-flex justify-content-end">Rp40.000</div>
+                            <div class="col d-flex justify-content-end">Rp20.000</div>
                         </div>
                         <div class="row">
                             <div class="col">
@@ -83,7 +83,7 @@
                                 <h6 style="font-weight: bold;">Total Harga</h6>
                             </div>
                             <div class="col d-flex justify-content-end">
-                                <h6 style="font-weight: bold;">Rp34.000</h6>
+                                <h6 style="font-weight: bold;">Rp20.000</h6>
                             </div>
                         </div>
                         <div class="d-grid gap-2 mt-2">

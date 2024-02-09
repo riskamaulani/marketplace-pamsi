@@ -28,23 +28,35 @@
                         <div class="row row-cols-2 row-cols-lg-6 g-2 g-lg-6">
 
                             <div class="col">
-                                <div class="card">
-                                    <a href="" data-bs-toggle="modal" data-bs-target="#modalDialogScrollable">
-                                        <img src="assets/img/pancake.jpg" class="card-img-top" alt="Gambar pancake">
-                                        <div class="card-body-product">
+                                
+                                    <div class="card">
+                                        <a href="{{ route('seller.produk.detail') }}" >
+                                            <img src="assets/img/es mentimun.jpg" class="card-img-top" alt="Gambar pancake">
+                                            <div class="card-body-product">
 
-                                            <h6 class="card-title-product">
-                                                pancake
-                                            </h6>
-                                            <p class="card-text">Rp 10.000</p>
-                                        </div>
-                                    </a>
-                                </div>
+                                                <h6 class="card-title-product">
+                                                    Es Mentimun
+                                                </h6>
+                                                <p class="card-text">Rp 10.000</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                
 
 
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-                            <div class="modal fade" id="modalDialogScrollable" tabindex="-1">
+    </section>
+
+
+
+
+    <!-- <div class="modal fade" id="modalDialogScrollable" tabindex="-1">
                                 <div class="modal-dialog modal-dialog-scrollable">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -161,21 +173,7 @@
 
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
 
-
-
-
-
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-
-    </section>
 </main><!-- End #main -->
 @endsection

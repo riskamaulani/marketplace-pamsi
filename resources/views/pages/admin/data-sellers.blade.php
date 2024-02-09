@@ -24,8 +24,8 @@
                                 <h5 class="card-title">Data Penjual</h5>
                             </div>
                             <div class="col-3 d-flex align-items-center justify-content-end">
-                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAddNewSeller"><i class="bi bi-plus"></i>Tambah
-                                    Penjual</button>
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAddNewSeller"><i class="bi bi-plus"></i>
+                                Tambah Penjual</button>
 
                                 <div class="modal fade" id="modalAddNewSeller" tabindex="-1">
                                     <div class="modal-dialog modal-dialog-scrollable">
@@ -94,7 +94,7 @@
                                 <tr>
                                     <th scope="row">{{ $loop->iteration }}</th>
                                     <td>
-                                        <a href="" onclick="edit_data_seller(
+                                        {{--<a href="" onclick="edit_data_seller(
                                            '{{ $user->toko->nama }}',
                                         'assets/img/{{ $user->toko->foto }}',
                                         '{{ $user->toko->deskripsi }}',
@@ -102,7 +102,9 @@
                                         '{{ $user->produks_count }}',
                                         '{{ $user->nomor_hp }}',
                                         '{{ $user->email }}'
-                                        )" data-bs-toggle="modal" data-bs-target="#modalSellers">{{ $user->toko->nama }}</a>
+                                        )" data-bs-toggle="modal" data-bs-target="#modalSellers">{{ $user->toko->nama }}</a>--}}
+                                        
+                                        <a href="{{ route('seller.detail') }}">{{ $user->toko->nama }}</a>
 
                                     </td>
                                     <td>{{ $user->nomor_hp ?? '-' }}</td>
@@ -120,7 +122,7 @@
                         </table>
                         <!-- End Table with stripped rows -->
 
-                        <div class="modal fade" id="modalSellers" tabindex="-1">
+                        {{--<div class="modal fade" id="modalSellers" tabindex="-1">
                             <div class="modal-dialog modal-dialog-scrollable">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -276,7 +278,7 @@
                                 </div>
                             </div>
                         </div>
-
+--}}
                     </div>
                 </div>
 

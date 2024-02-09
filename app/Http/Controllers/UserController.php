@@ -64,6 +64,10 @@ class UserController extends Controller
             'toko' => auth()->user()->toko
         ]);
     }
+    public function detailSeller()
+    {
+        return view('pages.admin.detail-data-seller');
+    }
 
     public function add(RequestsAddSellerRequest $request)
     {

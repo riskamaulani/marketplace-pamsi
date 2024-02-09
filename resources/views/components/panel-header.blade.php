@@ -2,7 +2,7 @@
 
     <div class="d-flex align-items-center justify-content-between">
         <a href="dashboard.blade.php" class="logo d-flex align-items-center">
-            <img src="assets/img/pamsi.jpeg" alt="Pamsi-Marketplace">
+            <img src="assets/img/logo-pamsi-marketplace-green.png" alt="Pamsi-Marketplace">
 
         </a>
         <!-- <i class="bi bi-list toggle-sidebar-btn"></i> -->

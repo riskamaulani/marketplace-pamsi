@@ -29,11 +29,14 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/profil', [UserController::class, 'profil'])->name('profil');
     Route::get('/transaksi', [TransaksiController::class, 'index'])->name('transaksi');
+    Route::get('/ulasan', [ProdukController::class, 'ulasan'])->name('ulasan');
 
     // Admmin
     Route::get('/user', [UserController::class, 'index'])->name('user');
     Route::post('/seller', [UserController::class, 'add'])->name('seller.add');
+    Route::get('/detail-penjual', [UserController::class, 'detailSeller'])->name('seller.detail');
     Route::get('/katalog', [ProdukController::class, 'catalog'])->name('catalog');
+    Route::get('/detail-katalog', [ProdukController::class, 'detailCatalog'])->name('seller.produk.detail');
 
     // Seller
     Route::get('/produk', [ProdukController::class, 'index'])->name('produk');
@@ -44,7 +47,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 
     // Buyer
-    Route::get('/detail_product/{id}', [ProdukController::class, 'show'])->name('produk.detail');
+    Route::get('/detail_product', [ProdukController::class, 'show'])->name('produk.detail');
     Route::get('/keranjang', [KeranjangController::class, 'index'])->name('keranjang');
     Route::get('/invoice', [TransaksiController::class, 'show'])->name('invoice');
     Route::get('/toko', [TokoController::class, 'index'])->name('store');

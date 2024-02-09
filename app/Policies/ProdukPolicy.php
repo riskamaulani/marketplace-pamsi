@@ -15,4 +15,6 @@ class ProdukPolicy
     {
         return $user->status->isAdmin();
     }
+
+    
 }

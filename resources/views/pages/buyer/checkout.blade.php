@@ -31,10 +31,10 @@
                                     <td>
                                         <div class="row">
                                             <div class="col-sm-3">
-                                                <a href="#"><img src="assets/img/pancake1.jpg" alt="" class="rounded" width="70px" height="auto"></a>
+                                                <a href="#"><img src="assets/img/es mentimun.jpg" alt="" class="rounded" width="70px" height="auto"></a>
                                             </div>
                                             <div class="col-sm-9">
-                                                Pancake Bluberry
+                                               Es mentimun
                                             </div>
                                         </div>
 
@@ -42,7 +42,7 @@
                                     <td>
                                         2
                                     </td>
-                                    <td>12.000</td>
+                                    <td>10.000</td>
 
                                 </tr>
 
@@ -131,7 +131,7 @@
                             <div class="col">
                                 <h6 style="font-weight: bold;">Total Harga</h6>
                             </div>
-                            <div class="col d-flex justify-content-end">Rp40.000</div>
+                            <div class="col d-flex justify-content-end">Rp20.000</div>
                         </div>
                         <div class="row">
                             <div class="col">
@@ -146,7 +146,7 @@
                                 <h6 style="font-weight: bold;">Total Harga</h6>
                             </div>
                             <div class="col d-flex justify-content-end">
-                                <h6 style="font-weight: bold;">Rp34.000</h6>
+                                <h6 style="font-weight: bold;">Rp20.000</h6>
                             </div>
                         </div>
                         </hr>

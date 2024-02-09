@@ -46,5 +46,15 @@ class KategoriSeeder extends Seeder
                 'nama' => 'Lukisan'
             ],
         );
+        Kategori::create(
+            [
+                'nama' => 'ATK'
+            ],
+        );
+        Kategori::create(
+            [
+                'nama' => 'Kosmetik'
+            ],
+        );
     }
 }

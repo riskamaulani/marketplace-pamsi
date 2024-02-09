@@ -12,7 +12,7 @@
                         <div class="card-body">
                             <div class="pt-4 pb-1">
                                 <div class="d-flex justify-content-center ">
-                                    <img src="assets/img/pamsi.jpeg" alt="pamsi" style="width:4rem;height:auto;">
+                                    <img src="assets/img/logo-pamsi-marketplace-green.png" alt="pamsi" style="width:4rem;height:auto;">
                                 </div>
                                 <h6 class="card-title text-center pb-0 fs-5">Buat Akun</h6>
                                 <!-- <p class="text-center small">Enter your personal details to create account</p> -->

@@ -1,8 +1,8 @@
 <header class="navbar-user py-2 mb-4">
     <div class="container">
         <div class="row">
-            <div class="col">
-                <a href="{{ route('home') }}"><img src="../assets/img/pamsi3.png" alt="" style="height:3rem;width:auto;"></a>
+            <div class="col my-auto">
+                <a href="{{ route('home') }}"><img src="../assets/img/logo-pamsi-marketplace-green.png" alt="" style="height:2rem;width:auto;"></a>
             </div>
 
             <div class="col">

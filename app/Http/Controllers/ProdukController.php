@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\UserStatus;
 use App\Models\Produk;
 use App\Models\Kategori;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\ProductStoreRequest;
 use App\Http\Requests\ProductUpdateRequest;
+use Illuminate\Support\Facades\Auth;
 
 class ProdukController extends Controller
 {
@@ -16,6 +18,21 @@ class ProdukController extends Controller
         $categories = Kategori::orderBy('nama')->get();
         return view('pages.seller.products', compact('categories', 'produks'));
     }
+
+    public function ulasan()
+    {
+        return match (Auth::user()->status) {
+            
+            UserStatus::PENJUAL => $this->ulasanPenjual()
+        };
+    }
+    private function ulasanPenjual()
+    {
+        return view('pages.seller.review', [
+            'toko' => auth()->user()->toko
+        ]);
+    }
+    
 
     public function store(ProductStoreRequest $request)
     {
@@ -43,11 +60,11 @@ class ProdukController extends Controller
         return redirect(route('produk'));
     }
 
-    public function show($id)
+    public function show()
     {
-        $produk = Produk::findOrFail($id);
+       
 
-        return view('pages.buyer.detail_product', compact('produk'));
+        return view('pages.buyer.detail_product');
     }
 
     public function update(ProductUpdateRequest $request, Produk $produk)
@@ -86,5 +103,10 @@ class ProdukController extends Controller
     public function catalog(Produk $produk)
     {
         return view('pages.admin.catalog-product');
+    }
+    
+    public function detailCatalog(Produk $produk)
+    {
+        return view('pages.admin.detail-catalog-product');
     }
 }

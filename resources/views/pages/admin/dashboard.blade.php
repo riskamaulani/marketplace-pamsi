@@ -345,15 +345,21 @@
                                         $isSelesai = true;
                                         }
 
-                                        @endphp--}}
+                                        @endphp
+                                        --}}
+
                                         <td>
 
+                                            
                                             {{--<span @class([ 'badge ' , 'bg-success'=> $isDisetujui,
                                                 'bg-warning' => $isSedangDikirim,
                                                 'bg-danger' => $isDitolak,
                                                 'bg-secondary' => $isSelesai,
                                                 ])>
-                                                Disetujui</span>--}}
+                                                Disetujui</span>
+                                            --}}
+                                           
+
                                             <span class="badge bg-success">Disetujui</span>
                                         </td>
                                     </tr>
@@ -389,14 +395,15 @@
                                         </th>
                                         <td>
 
-                                            <a href="" onclick="edit_data('{{ $ts->id_produk }}','{{ $ts->harga_produk }}', '{{ $ts->nama_produk }}', 'assets/img/{{ $ts->gambar_produk }}', '{{ $ts->total }}',)" class="text-primary fw-bold" data-bs-toggle="modal" data-bs-target="#modalTopSelling">{{ $ts->nama_produk }}</a>
+                                            <a href="{{ route('seller.produk.detail') }}" >{{ $ts->nama_produk }}</a>
                                         </td>
                                     </tr>
                                     @endforeach
                                 </tbody>
                             </table>
 
-                            <div class="modal fade" id="modalTopSelling" tabindex="-1">
+                            {{--
+                                <div class="modal fade" id="modalTopSelling" tabindex="-1">
                                 <div class="modal-dialog modal-dialog-scrollable">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -459,7 +466,7 @@
                                     </div>
                                 </div>
                             </div>
-
+--}}
                             <div class="modal fade" id="modalTransactions" tabindex="-1">
                                 <div class="modal-dialog modal-dialog-scrollable">
                                     <div class="modal-content">

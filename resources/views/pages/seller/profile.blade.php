@@ -288,8 +288,5 @@
             cancelImageUpdate.style.display = 'none'; // Hide cancel button
         });
     </script>
-<<<<<<< HEAD
+
 @endsection
-=======
-@endsection
->>>>>>> 2bfcf04e00bda82cf048d820fb54300f5010f463
