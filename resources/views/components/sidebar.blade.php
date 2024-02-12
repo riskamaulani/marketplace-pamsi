@@ -54,11 +54,11 @@
         </li>
         @endcan
 
-        @can('catalog', 'App\Models\Produk')
+        @can('category', 'App\Models\Kategori')
         <li class="nav-item">
-            <a class="nav-link collapsed" href="{{ route('catalog') }}">
-                <i class="bi bi-bag"></i>
-                <span>Katalog Produk</span>
+            <a class="nav-link collapsed" href="{{ route('category.list') }}">
+                <i class="bi bi-card-list"></i>
+                <span>Kategori Produk</span>
             </a>
         </li>
         @endcan

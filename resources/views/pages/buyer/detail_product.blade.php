@@ -35,7 +35,7 @@
 
                     <div class="card-body">
                         <div class="row d-flex flex-row-reverse ">
-                            <div class="col-3 align-midle ">
+                            <div class="col-3 align-midle  ">
                                 <span class="badge bg-success mt-4 me-2">Tersedia</span>
                             </div>
                             <div class="col-9">
@@ -64,29 +64,7 @@
                         </div>
                         
 
-                        <!-- <hr class="line-divider">
-                        <div class="row price-detail-product-buyer mt-3">
-                            <h5 style="font-size: medium;font-weight:bold">Atur Jadwal Pengiriman</h5>
-                        </div> -->
-                        <!-- <div class="row day-delivery-detail-product-buyer">
-
-                            <label for="day-delivery" class="col-7 col-form-label " style="font-weight:400;color:black">
-                                <h6>Hari Pengiriman</h6>
-                            </label>
-                            <div class="col-5">
-                                <select class="form-select " aria-label="Default select example">
-                                    <option selected>Pilih hari</option>
-                                    <option value="1">Senin</option>
-                                    <option value="2" disabled>Selasa</option>
-                                    <option value="3">Rabu</option>
-                                    <option value="4" disabled>Kamis</option>
-                                    <option value="5">Jumat</option>
-                                    <option value="6" disabled>Sabtu</option>
-                                    <option value="7">Minggu</option>
-
-                                </select>
-                            </div>
-                        </div> -->
+                        
 
                         <hr class="line-divider">
 
@@ -124,7 +102,9 @@
                     <div class="btn-toolbar my-2" role="toolbar" aria-label="Toolbar with button groups">
                         <div class="btn-group" role="group" aria-label="First group">
                             <button type="button" class="btn btn-primary btn-sm">-</button>
-                            <button type="button" class="btn btn-primary btn-sm disable">1</button>
+                            <!-- jumlahnya bisa pake button atau edit -->
+                            <input type="text" class="btn btn-primary btn-sm " style="width: 3rem;" name="count" value="1"required />
+                           
                             <button type="button" class="btn btn-primary btn-sm">+</button>
 
                         </div>

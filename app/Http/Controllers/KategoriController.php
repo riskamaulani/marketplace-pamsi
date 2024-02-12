@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AddCategoryRequest;
 use App\Models\Kategori;
 use Illuminate\Http\Request;
 
@@ -21,13 +22,38 @@ class KategoriController extends Controller
     {
         //
     }
+    public function list()
+    {
+        $kategori = Kategori::all();
+        return view('pages.admin.data-category', compact('kategori'));
+        
+    }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function add(AddCategoryRequest $request)
     {
-        //
+        try {
+
+            // tambah penjual
+            $kategori = Kategori::create([
+                'nama' => $request->nama,
+                
+
+            ]);
+
+            //tambah ke toko
+            
+        } catch (\Throwable $th) {
+            notify()->error('Penambahan kategori gagal. ' . $th->getMessage(), 'Gagal!');
+            return back();
+        }
+
+        notify()->success('Penambahan kategori berhasil.', 'Berhasil!');
+
+
+        return back();
     }
 
     /**

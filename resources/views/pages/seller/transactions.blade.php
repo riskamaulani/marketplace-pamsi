@@ -154,6 +154,8 @@
                                                                             Dikirim</option>
                                                                         <option value="3">Selesai
                                                                         </option>
+                                                                        <option value="4">Ditolak
+                                                                        </option>
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -198,7 +200,7 @@
                                     <td>08123456789</td>
                                     <td>Pancake Madu (2) </td>
                                     <td>Rp<span>30000</span></td>
-                                    <td><span class="badge bg-warning">Sedang dikirim</span></td>
+                                    <td><span class="badge bg-light text-success">Menunggu Konfirmasi</span></td>
                                 </tr>
                             </tbody>
                             <tbody>

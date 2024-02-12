@@ -61,7 +61,7 @@
                                     </div>
                                 </div>
                                 <div class="row mb-3">
-                                    <label for="jenispengiriman" class="col-sm-4 col-form-label" style="font-weight:500;color:black">Jenis Pengiriman</label>
+                                    <label for="jenispengiriman" class="col-sm-4 col-form-label" style="font-weight:500;color:black">Jenis Pesanan</label>
                                     <div class="col-sm-8">
                                         <select class="form-select" aria-label="Default select example" disabled>
 

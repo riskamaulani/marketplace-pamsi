@@ -273,7 +273,7 @@
                                             <td>Maesaroh</td>
                                             <td>Pancake Keju <span>(2)</span></td>
                                             <td>20.000</td>
-                                            <td><span class="badge bg-success">Disetujui</span></td>
+                                            <td><span class="badge bg-light text-success">Menunggu Konfirmasi</span></td>
                                         </tr>
                                         <tr>
                                             <th scope="row"><a href="#">PO123456789</a></th>
@@ -403,6 +403,8 @@
                                                                                     Sedang Dikirim</option>
                                                                                 <option value="3">
                                                                                     Selesai</option>
+                                                                                <option value="4">
+                                                                                    Ditolak</option>
                                                                             </select>
                                                                         </div>
                                                                     </div>

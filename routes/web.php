@@ -9,6 +9,7 @@ use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\TokoController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\KategoriController;
+use App\Models\Kategori;
 
 // route for login register
 Route::controller(AuthController::class)->group(function () {
@@ -34,6 +35,8 @@ Route::group(['middleware' => 'auth'], function () {
     // Admmin
     Route::get('/user', [UserController::class, 'index'])->name('user');
     Route::post('/seller', [UserController::class, 'add'])->name('seller.add');
+    Route::get('/data-kategori', [KategoriController::class, 'list'])->name('category.list');
+    Route::post('/tambah-kategori', [KategoriController::class, 'add'])->name('category.add');
     Route::get('/detail-penjual', [UserController::class, 'detailSeller'])->name('seller.detail');
     Route::get('/katalog', [ProdukController::class, 'catalog'])->name('catalog');
     Route::get('/detail-katalog', [ProdukController::class, 'detailCatalog'])->name('seller.produk.detail');
