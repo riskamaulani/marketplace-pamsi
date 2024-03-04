@@ -5,10 +5,14 @@ namespace App\Http\Controllers;
 use App\Enums\UserStatus;
 use App\Models\Produk;
 use App\Models\Kategori;
+use App\Models\Transaksi;
+use App\Models\Keranjang;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\ProductStoreRequest;
+use App\Http\Requests\TransaksiStoreRequest;
 use App\Http\Requests\ProductUpdateRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class ProdukController extends Controller
 {
@@ -60,11 +64,64 @@ class ProdukController extends Controller
         return redirect(route('produk'));
     }
 
-    public function show()
+    public function show($id)
     {
        
+        $data['data']=Produk::where('produks.id',$id)
+        ->leftJoin('tokos', 'tokos.id', '=', 'produks.toko_id')
+        ->leftJoin('kategoris', 'kategoris.id', '=', 'produks.kategori_id')
+        ->select('produks.*','tokos.nama as nama_toko','kategoris.nama as nama_kat')
+        ->first();
+        return view('pages.buyer.detail_product',$data);
+    }
 
-        return view('pages.buyer.detail_product');
+    public function proses_pesanan(Request $request)
+    {
+        $data['count']=$request->count;
+        $data['produk']=Produk::where('id',$request->produk_id)->first();
+        $data['total']=$data['produk']->harga*$data['count'];
+        if($request->action=='keranjang')
+        {
+            Keranjang::create([
+                'user_id'=>$request->user_id,
+                'produk_id' => $request->produk_id,
+                'jumlah' => $request->count
+    
+            ]);
+            notify()->success('Penambahan ke Keranjang berhasil.', 'Berhasil!');
+            return redirect('/');
+        }
+        else {
+           
+            return view('pages.buyer.checkout',$data);
+        }
+    }
+
+    public function simpanTrans(Request $request)
+    {
+        Transaksi::create([
+            'transaksi_id'=>'TRX'.date('YmdHis'),
+            'produk_id' => $request->produk_id,
+            'harga' => $request->harga,
+            'jumlah' => $request->jumlah,
+            'total' => $request->total,
+            'status' =>0,
+            'bukti' => 'bukti',
+
+        ]);
+        // try {
+        //     // save image first
+        //     // $gambar = $request->file('bukti')->store('images-produk');
+
+        //     // store data
+           
+        // } catch (\Throwable $th) {
+        //     notify()->error('Penambahan transaksi gagal. ' . $th->getMessage(), 'Gagal!');
+        //     return back();
+        // }
+
+        notify()->success('Penambahan transaksi berhasil.', 'Berhasil!');
+        return redirect('/');
     }
 
     public function update(ProductUpdateRequest $request, Produk $produk)

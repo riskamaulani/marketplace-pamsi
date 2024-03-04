@@ -4,14 +4,14 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UserStoreRequest extends FormRequest
+class ProfilUserUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return auth()->user()->status->isPembeli();
     }
 
     /**
@@ -22,11 +22,10 @@ class UserStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nama' => ['required'],
-            'email' => ['required', 'email', 'unique:users,email'],
-            'nomor_hp' => ['required'],
-            'username' => ['required', 'unique:users,username'],
-            'password' => ['required']
+            'foto' => 'file|image',
+            'nama' => 'required',
+            'alamat' => 'required',
+            'nomor_hp' => 'required',
         ];
     }
 }

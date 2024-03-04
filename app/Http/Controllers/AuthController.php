@@ -32,6 +32,7 @@ class AuthController extends Controller
             $user = $registerNewUser->pembeli(
                 $request->nama,
                 $request->username,
+                $request->nomor_hp,
                 $request->password,
                 $request->email
             );

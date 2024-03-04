@@ -69,11 +69,11 @@
                                         <div class="col-lg-9 col-md-8" id="toko_nama">{{ $toko->nama }}</div>
                                     </div>
 
-                                    <div class="row">
+                                    {{--<div class="row">
                                         <div class="col-lg-3 col-md-4 label">Pengelola</div>
                                         <div class="col-lg-9 col-md-8" id="toko_pengelola">
                                             {{ $toko->pengelola == '[]' ? '-' : $toko->pengelola }}</div>
-                                    </div>
+                                    </div>--}}
 
                                     <div class="row">
                                         <div class="col-lg-3 col-md-4 label">No. Telepon</div>
@@ -135,14 +135,14 @@
                                             </div>
                                         </div>
 
-                                        <div class="row mb-3">
-                                            <label for="pengelola"
-                                                class="col-md-4 col-lg-3 col-form-label">Pengelola</label>
-                                            <div class="col-md-8 col-lg-9">
-                                                <input name="pengelola" type="text" class="form-control"
-                                                    placeholder="Nama Pengelola" />
-                                            </div>
+                                    {{--<div class="row mb-3">
+                                        <label for="pengelola"
+                                            class="col-md-4 col-lg-3 col-form-label">Pengelola</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input name="pengelola" type="text" class="form-control"
+                                                placeholder="Nama Pengelola" />
                                         </div>
+                                    </div>--}}
 
 
                                         <div class="row mb-3">

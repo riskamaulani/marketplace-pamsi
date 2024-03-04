@@ -31,18 +31,18 @@
                                     <td>
                                         <div class="row">
                                             <div class="col-sm-3">
-                                                <a href="#"><img src="assets/img/es mentimun.jpg" alt="" class="rounded" width="70px" height="auto"></a>
+                                                <a href="#"><img src="../storage/{{$produk->gambar}}" alt="" class="rounded" width="70px" height="auto"></a>
                                             </div>
                                             <div class="col-sm-9">
-                                               Es mentimun
+                                               {{ $produk->nama }}
                                             </div>
                                         </div>
 
                                     </td>
                                     <td>
-                                        2
+                                        {{ $count }}
                                     </td>
-                                    <td>10.000</td>
+                                    <td>{{$produk->harga}}</td>
 
                                 </tr>
 
@@ -125,19 +125,19 @@
                             <div class="col">
                                 <h6 style="font-weight: bold;">Jumlah Produk</h6>
                             </div>
-                            <div class="col d-flex justify-content-end">2</div>
+                            <div class="col d-flex justify-content-end">{{$count}}</div>
                         </div>
                         <div class="row">
                             <div class="col">
                                 <h6 style="font-weight: bold;">Total Harga</h6>
                             </div>
-                            <div class="col d-flex justify-content-end">Rp20.000</div>
+                            <div class="col d-flex justify-content-end">{{$total}}</div>
                         </div>
                         <div class="row">
                             <div class="col">
                                 <h6 style="font-weight: bold;">Ongkos Kirim</h6>
                             </div>
-                            <div class="col d-flex justify-content-end">-</div>
+                            <div class="col d-flex justify-content-end">Rp 10000</div>
                         </div>
 
                         <hr class="line-divider">
@@ -146,7 +146,7 @@
                                 <h6 style="font-weight: bold;">Total Harga</h6>
                             </div>
                             <div class="col d-flex justify-content-end">
-                                <h6 style="font-weight: bold;">Rp20.000</h6>
+                                <h6 style="font-weight: bold;">{{$total+10000}}</h6>
                             </div>
                         </div>
                         </hr>
@@ -155,8 +155,9 @@
 
                 </div>
                 <div class="card checkout overflow-auto">
+              
                     <div class="card-body">
-                        <h1 class="card-title-ringkasan ">Unggah Bukti Pembayaran</h1>
+                        <!-- <h1 class="card-title-ringkasan ">Unggah Bukti Pembayaran</h1>
                         <div class="image-detail-product-big mb-2">
                             <img src="assets/img/bukti1.jpg" class="rounded mx-auto d-block" width="200px" height="200px">
 
@@ -165,31 +166,41 @@
                         <div class="row mb-3">
 
                             <div class="col">
-                                <input class="form-control" type="file" id="formFile" />
+                                
                             </div>
-                        </div>
+                        </div> -->
                         <div class="d-grid gap-2">
-                            <button class="btn btn-primary" type="submit" data-bs-toggle="modal" data-bs-target="#buttonOrderNow">Buat Pesanan Sekarang</button>
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#buttonOrderNow">Buat Pesanan Sekarang</button>
                             <div class="modal fade" id="buttonOrderNow" tabindex="-1">
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title">Pesan Sekarang</h5>
+                                            <h5 class="modal-title">Apakah anda yakin untuk pesan sekarang?</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            Apakah anda yakin untuk pesan sekarang?
+                                        <form action="{{ route('produk.simpanTrans') }}" method="POST" enctype="multipart/form-data" autocomplete="off">
+                                        @csrf
+                                            Upload Bukti Transaksi
+                                            <input class="form-control" type="file" id="formFile" name="bukti"/>
+                                            <input name="produk_id" type="hidden" class="form-control" value="{{$produk->id}}"/>
+                                            <input name="harga" type="hidden" class="form-control" value="{{$produk->harga}}"/>
+                                            <input name="jumlah" type="hidden" class="form-control" value="{{$count}}"/>
+                                            <input name="total" type="hidden" class="form-control" value="{{$total+10000}}"/>
+                                            
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                                            <button type="button" class="btn btn-primary">Pesan Sekarang</button>
+                                            <button type="submit" class="btn btn-primary">Pesan Sekarang</button>
                                         </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div><!-- End Vertically centered Modal-->
 
                         </div>
                     </div>
+                
                 </div>
 
             </div>

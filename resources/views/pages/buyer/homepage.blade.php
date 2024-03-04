@@ -18,7 +18,7 @@
                     @forelse ($produk as $pr)
                     <div class="col">
                         <div class="card">
-                            <a href="{{ route('produk.detail') }}">
+                            <a href="{{ route('produk.detail',[$pr->id]) }}">
                                 <img src="{{ 'storage/'.$pr->gambar }}" class="card-img-top" alt="Gambar {{ $pr->nama }}">
                                 <div class="card-body-product">
 
@@ -46,7 +46,7 @@
                  @forelse ($produk as $pr)
                     <div class="col">
                         <div class="card">
-                            <a href="{{ route('produk.detail') }}">
+                            <a href="{{ route('produk.detail',[$pr->id]) }}">
                                 <img src="{{ 'storage/'.$pr->gambar }}" class="card-img-top" alt="Gambar {{ $pr->nama }}">
                                 <div class="card-body-product">
 
@@ -99,7 +99,7 @@
                     @forelse ($produk as $pr)
                     <div class="col">
                         <div class="card">
-                            <a href="{{ route('produk.detail') }}">
+                            <a href="{{ route('produk.detail',[$pr->id]) }}">
                                 <img src="{{ 'storage/'.$pr->gambar }}" class="card-img-top" alt="Gambar {{ $pr->nama }}">
                                 <div class="card-body-product">
 

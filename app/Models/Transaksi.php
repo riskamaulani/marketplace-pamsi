@@ -15,21 +15,37 @@ class Transaksi extends Model
 
     protected $guarded = [];
 
-    protected $attributes = [
-        'status' => TransaksiStatus::KONFIRMASI
+    protected $table = 'transaksi_produk';
+    protected $fillable = [
+        'transaksi_id', 
+        'produk_id',
+        'harga',
+        'jumlah',
+        'total',
+        'bukti',
+        'status'
     ];
 
-    protected $casts = [
-        'status' => TransaksiStatus::class
-    ];
+    // protected $attributes = [
+    //     'produk_id' => null,
+    //     'harga' => null,
+    //     'jumlah' => null,
+    //     'total' => null,
+    //     'bukti' => null,
+    //     'status' => 0
+    // ];
 
-    public static function boot()
-    {
-        parent::boot();
-        self::creating(function ($model) {
-            $model->id = IdGenerator::generate(['table' => 'transaksis', 'field' => 'id', 'length' => 15, 'prefix' => 'TRX' . date('ym'), 'reset_on_prefix_change' => true]);
-        });
-    }
+    // protected $casts = [
+    //     'status' => TransaksiStatus::class
+    // ];
+
+    // public static function boot()
+    // {
+    //     parent::boot();
+    //     self::creating(function ($model) {
+    //         $model->id = IdGenerator::generate(['table' => 'transaksi_produk', 'field' => 'transaksi_id', 'length' => 15, 'prefix' => 'TRX' . date('ym'), 'reset_on_prefix_change' => true]);
+    //     });
+    // }
 
     public function user()
     {

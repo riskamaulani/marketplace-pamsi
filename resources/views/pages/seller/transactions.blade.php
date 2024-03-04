@@ -133,7 +133,7 @@
                                                                     Pembayaran</label>
                                                                 <div class="col-sm-8">
                                                                     <div class="image-detail-product-big">
-                                                                        <img src="" class="rounded mx-auto d-block" width="200px" height="200px">
+                                                                        <img src="assets/img/bukti1.jpg" class="rounded mx-auto d-block" width="200px" height="200px">
 
                                                                     </div>
                                                                 </div>

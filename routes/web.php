@@ -50,11 +50,13 @@ Route::group(['middleware' => 'auth'], function () {
 
 
     // Buyer
-    Route::get('/detail_product', [ProdukController::class, 'show'])->name('produk.detail');
+    Route::get('/detail_product/{id}', [ProdukController::class, 'show'])->name('produk.detail');
+    Route::post('/proses_pesanan', [ProdukController::class, 'proses_pesanan'])->name('produk.proses');
+    Route::post('/simpanTrans', [ProdukController::class, 'simpanTrans'])->name('produk.simpanTrans');
     Route::get('/keranjang', [KeranjangController::class, 'index'])->name('keranjang');
     Route::get('/invoice', [TransaksiController::class, 'show'])->name('invoice');
     Route::get('/toko', [TokoController::class, 'index'])->name('store');
-
+    Route::post('/profil-user/{user}', [UserController::class, 'profilUser'])->name('profil.user');
 
 
     //coba-coba

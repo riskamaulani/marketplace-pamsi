@@ -4,14 +4,14 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UserStoreRequest extends FormRequest
+class TransaksiStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return auth()->user()->status->isPembeli();
     }
 
     /**
@@ -22,11 +22,12 @@ class UserStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nama' => ['required'],
-            'email' => ['required', 'email', 'unique:users,email'],
-            'nomor_hp' => ['required'],
-            'username' => ['required', 'unique:users,username'],
-            'password' => ['required']
+            'harga' => 'required|numeric',
+            'jumlah' => 'required|numeric',
+            'total' => 'required|numeric',
+            'produk_id' => 'required|exists:produks,id',
+            'bukti' => 'required|file|image',
+            'status' => 'required',
         ];
     }
 }

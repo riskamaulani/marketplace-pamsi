@@ -35,7 +35,7 @@
 
                                 <div class="col-12">
                                     <label for="yourHp" class="form-label">Nomor Handphone</label>
-                                    <input type="hp" name="hp" class="form-control" id="yourHp" required>
+                                    <input type="hp" name="nomor_hp" class="form-control" id="yourHp" required>
                                     <div class="invalid-feedback">Masukkan nomor handphone</div>
                                 </div>
 

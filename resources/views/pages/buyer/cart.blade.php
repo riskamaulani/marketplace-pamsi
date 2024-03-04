@@ -18,14 +18,13 @@
 
 
                     <div class="card-body">
-
-
+                        @foreach ($keranjang as $cart)
                         <div class="row  mx-2">
                             <div class="row">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="gridCheck1" />
                                     <label class="form-check-label" for="gridCheck1" style="font-weight: 500;">
-                                        Fluffy Pancake Store
+                                        {{ $cart->nama_toko }}
                                     </label>
                                 </div>
 
@@ -48,6 +47,7 @@
                             </div>
                             <hr class="line-divider">
                         </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

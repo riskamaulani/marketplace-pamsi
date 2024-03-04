@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Enums\UserStatus;
 use App\Http\Requests\AddSellerRequest as RequestsAddSellerRequest;
 use App\Http\Requests\ProfilTokoUpdateRequest;
+use App\Http\Requests\ProfilUserUpdateRequest;
 use Illuminate\Http\Request;
 use Illuminate\Http\Request\AddSellerRequest;
 use Illuminate\Support\Facades\Auth;
@@ -55,8 +56,42 @@ class UserController extends Controller
 
     private function profilPembeli()
     {
-        return view('pages.buyer.profile');
+        return view('pages.buyer.profile', [
+            'user' => auth()->user()
+        ]);
     }
+
+    public function profilUser(ProfilUserUpdateRequest $request, User $user)
+    {
+        try {
+            // update image if user want to update
+            if ($request->file('foto')) {
+                if ($user->foto_profil) {
+                    Storage::delete($user->foto_profil);
+                }
+                $user->foto_profil = $request->file('foto')->store('images-user');
+            }
+
+            
+            // update data for user model
+            $user->nama = $request->nama;
+            $user->alamat = $request->alamat;
+            $user->nomor_hp = $request->phone;
+            $user->email = $request->email;
+            $user->save();
+
+            // save to database
+            $user->save();
+        } catch (\Throwable $th) {
+            dd($th->getMessage());
+            // notify()->error('Update Profil user Gagal. ' . $th->getMessage(), 'Gagal!');
+            // return back();
+        }
+
+        notify()->success('Update Profil User berhasil.', 'Berhasil!');
+        return back();
+    }
+    
 
     private function profilPenjual()
     {

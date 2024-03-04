@@ -9,7 +9,8 @@ class KeranjangController extends Controller
 {
     public function index()
     {
-        return view('pages.buyer.cart');
+        $keranjang = Keranjang::all();
+        return view('pages.buyer.cart', compact('keranjang'));
     }
 
     /**

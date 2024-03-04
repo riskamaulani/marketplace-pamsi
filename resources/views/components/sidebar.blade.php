@@ -63,6 +63,15 @@
         </li>
         @endcan
 
+        @can('catalog', 'App\Models\Produk')
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{ route('catalog') }}">
+                <i class="bi bi-bag"></i>
+                <span>Katalog Produk</span>
+            </a>
+        </li>
+        @endcan
+
        
 
 

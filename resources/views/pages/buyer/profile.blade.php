@@ -16,8 +16,9 @@
             <div class="col-4">
                 <div class="card">
                     <div class="card-body profile-card pt-4 px-4 d-flex flex-column align-items-center">
-                        <img src="assets/img/profil-pict.jpg" alt="Profile" class="rounded py-auto px-auto" style=" width: 100%; height:auto" />
-                        <h1 class="card-title">Maesaroh</h1>
+                    <img src="{{ $user->foto ? 'storage/' . $user->foto : 'assets/img/no-image.jpg' }}"
+                                alt="Profile" class="rounded-circle" />
+                        <h1 class="card-title">{{ auth()->user()->nama }}</h1>
                     </div>
                 </div>
             </div>
@@ -82,15 +83,25 @@
 
                             <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
                                 <!-- Profile Edit Form -->
-                                <form>
+                                <form action="{{ route('profil.user', ['user' => $user->id]) }}" method="POST"
+                                        enctype="multipart/form-data" autocomplete="off">
+                                        @csrf
                                     <div class="row mb-3">
-                                        <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Gambar
-                                            Profil</label>
+                                        <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">
+                                            Gambar Profil</label>
                                         <div class="col-md-8 col-lg-9">
-                                            <img src="assets/img/profil-pict.jpg" alt="Profile" style="width:100px" />
-                                            <div class="pt-2">
-                                                <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"><i class="bi bi-upload" style="color: white;"></i></a>
-                                                <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image"><i class="bi bi-trash" style="color: white;"></i></a>
+                                        <div class="col-md-8 col-lg-9">
+                                                <img id="imagePreviewUpdate"
+                                                    src="{{ $user->foto ? 'storage/' . $user->foto : 'assets/img/no-image.jpg' }}"
+                                                    alt="Image Preview" class="rounded mx-auto d-block" width="200px"
+                                                    height="200px" />
+                                                <div class="pt-2">
+                                                    <button type="button" class="btn btn-danger btn-sm"
+                                                        style="display: none;" id="cancelImageUpdate"><i class="bi bi-trash"
+                                                            style="color:white;"></i></button>
+                                                    <input type="file" id="imageInputUpdate" name="foto"
+                                                        accept="image/*" aria-label="File upload">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -99,35 +110,35 @@
                                         <label for="namatoko" class="col-md-4 col-lg-3 col-form-label">Nama
                                             Lengkap</label>
                                         <div class="col-md-8 col-lg-9">
-                                            <input name="fullName" type="text" class="form-control" id="fullName" value="#" />
+                                            <input name="nama" type="text" class="form-control" id="fullName" placeholder="Nama Lengkap" value="{{ $user->nama }}" required  />
                                         </div>
                                     </div>
 
                                     <div class="row mb-3">
                                         <label for="tentang" class="col-md-4 col-lg-3 col-form-label">Alamat</label>
                                         <div class="col-md-8 col-lg-9">
-                                            <textarea name="about" class="form-control" id="about" style="height: 100px">#</textarea>
+                                            <textarea name="alamat" class="form-control" id="about" style="height: 100px" placeholder="Alamat" required>{{ $user->alamat }}</textarea>
                                         </div>
                                     </div>
 
                                     <div class="row mb-3">
                                         <label for="pengelola" class="col-md-4 col-lg-3 col-form-label">Username</label>
                                         <div class="col-md-8 col-lg-9">
-                                            <input name="company" type="text" class="form-control" id="company" value="#" />
+                                            <input name="username" type="text" class="form-control" id="username" placeholder="Username" value="{{ $user->username }}" required   />
                                         </div>
                                     </div>
 
                                     <div class="row mb-3">
                                         <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Telepon</label>
                                         <div class="col-md-8 col-lg-9">
-                                            <input name="phone" type="text" class="form-control" id="Phone" value="#" />
+                                            <input name="phone" type="text" class="form-control" id="Phone" placeholder="Nomor Handphone" value="{{ $user->nomor_hp }}" required   />
                                         </div>
                                     </div>
 
                                     <div class="row mb-3">
                                         <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
                                         <div class="col-md-8 col-lg-9">
-                                            <input name="email" type="email" class="form-control" id="Email" value="#" />
+                                            <input name="email" type="email" class="form-control" id="Email" placeholder="Email" value="{{ $user->email }}" required   />
                                         </div>
                                     </div>
 
@@ -154,4 +165,27 @@
         </div>
     </div>
 </main>
+
+<script>
+        var defaultImage = @php echo isset($user->foto) ? json_encode('storage/'.$user->foto) : json_encode('assets/img/no-image.jpg'); @endphp
+
+        var imageInputUpdate = document.getElementById('imageInputUpdate');
+        var imagePreviewUpdate = document.getElementById('imagePreviewUpdate');
+        var cancelImageUpdate = document.getElementById('cancelImageUpdate');
+
+        imageInputUpdate.addEventListener('change', function(event) {
+            var reader = new FileReader();
+            reader.onload = function() {
+                imagePreviewUpdate.src = reader.result;
+                cancelImageUpdate.style.display = 'inline'; // Show cancel button
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        });
+
+        cancelImageUpdate.addEventListener('click', function() {
+            imagePreviewUpdate.src = defaultImage;
+            imageInputUpdate.value = ''; // Clear image input
+            cancelImageUpdate.style.display = 'none'; // Hide cancel button
+        });
+    </script>
 @endsection
