@@ -58,8 +58,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/keranjang', [KeranjangController::class, 'index'])->name('keranjang');
     Route::get('/invoice', [TransaksiController::class, 'show'])->name('invoice');
     Route::get('/toko/{id}', [TokoController::class, 'show'])->name('store');
-    Route::put('/profil-user/{user}', [UserController::class, 'profilUser'])->name('profil.user');
+    // Route::put('/profil-user/{user}', [UserController::class, 'profilUser'])->name('profil.user');
     Route::get('/detail_category/{id}', [KategoriController::class, 'show'])->name('kategori.detail');
+    Route::post('/user-profil/{user}', [UserController::class, 'profilUser'])->name('user.profil');
 
 
     //coba-coba

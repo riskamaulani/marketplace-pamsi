@@ -98,9 +98,10 @@
 
                                 <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
                                     <!-- Profile Edit Form -->
-                                    <form action="{{ route('profil.toko', ['toko' => $toko->id]) }}" method="POST"
+                                    <form action="{{ route('profil.toko', ['toko' => $toko->id]) }}" method="post"
                                         enctype="multipart/form-data" autocomplete="off">
                                         @csrf
+                                        @method('post')
                                         <div class="row mb-3">
                                             <label for="profileImageUpdate" class="col-md-4 col-lg-3 col-form-label">
                                                 Gambar Profil

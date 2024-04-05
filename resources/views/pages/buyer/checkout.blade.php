@@ -65,7 +65,7 @@
                                     <div class="col-sm-8">
                                         <select class="form-select" aria-label="Default select example" disabled>
 
-                                            <option value="1">Pre-order</option>
+                                            <option value="1">{{$produk->order_type}}</option>
 
 
                                         </select>

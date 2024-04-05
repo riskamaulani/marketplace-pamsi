@@ -83,10 +83,10 @@
 
                             <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
                                 <!-- Profile Edit Form -->
-                                <form action="{{ route('profil.user', $user->id) }}" method="POST"
+                                <form action="{{ route('profil.user', $user->id) }}" method="post"
                                         enctype="multipart/form-data" autocomplete="off">
                                         @csrf
-                                        @method('PUT')
+                                        @method('put')
                                     <div class="row mb-3">
                                         <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">
                                             Gambar Profil</label>

@@ -63,6 +63,7 @@ class UserController extends Controller
 
     public function profilUser(ProfilUserUpdateRequest $request, User $user)
     {
+        
         try {
             // update image if user want to update
             if ($request->file('foto')) {
