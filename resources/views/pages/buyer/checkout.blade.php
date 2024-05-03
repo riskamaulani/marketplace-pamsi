@@ -49,13 +49,15 @@
                             </tbody>
                         </table>
                         <table>
+                            <form action="{ route('produk.simpanTrans') }}" method="POST" enctype="multipart/form-data" autocomplete="off">
+                            @csrf
                             <tbody>
                                 <div class="row mb-3">
-
+                                    
                                     <label for="catatan" class="col-sm-4 col-form-label" style="font-weight:500;color:black">Catatan</label>
                                     <div class="col-sm-8">
                                         <div class="form-floating mb-3">
-                                            <textarea class="form-control" placeholder="Catatan (Opsional)" id="catatan" style="height: 100px"></textarea>
+                                            <textarea class="form-control" name="catatan" placeholder="Catatan (Opsional)" id="catatan" style="height: 100px" required></textarea>
                                             <label for="catatan">Catatan (Opsional)</label>
                                         </div>
                                     </div>
@@ -63,9 +65,9 @@
                                 <div class="row mb-3">
                                     <label for="jenispengiriman" class="col-sm-4 col-form-label" style="font-weight:500;color:black">Jenis Pesanan</label>
                                     <div class="col-sm-8">
-                                        <select class="form-select" aria-label="Default select example" disabled>
+                                        <select name="tipeOrder" class="form-select" aria-label="Default select example" disabled>
 
-                                            <option value="1">{{$produk->order_type}}</option>
+                                            <option value="{{$produk->order_type}}">{{$produk->order_type}}</option>
 
 
                                         </select>
@@ -74,10 +76,12 @@
                                 <div class="row mb-3">
                                     <label for="statusproduct" class="col-sm-4 col-form-label" style="font-weight:500;color:black">Metode Pengiriman</label>
                                     <div class="col-sm-8">
-                                        <select class="form-select" aria-label="Default select example">
-
-                                            <option value="1" selected>Ambil sendiri</option>
-                                            <option value="2">Via Kurir (Daerah Mataram) Rp10.000</option>
+                                        <select name="tipePengiriman" class="form-select" aria-label="Default select example">
+                                            @foreach (\App\Enums\DeliveryType::cases() as $pengiriman)
+                                            <option value="{{ $pengiriman->value }}">
+                                                {{ $pengiriman->getLabelText() }}
+                                            </option>
+                                            @endforeach
 
                                         </select>
                                     </div>
@@ -99,20 +103,21 @@
                                 <div class="row mb-3">
                                     <label for="statusproduct" class="col-sm-4 col-form-label" style="font-weight: 500;color:black">Metode Pembayaran</label>
                                     <div class="col-sm-8">
-                                        <select class="form-select" aria-label="Default select example">
-
-                                            <option value="1" selected>COD</option>
-                                            <option value="2">Transfer Bank NTB Syariah (535219875648 - Madrasah
-                                                Alam Sayang Ibu)</option>
-                                            <option value="3">E-Wallet DANA (0821379473628 - Madrasah Alam Sayang
-                                                Ibu) </option>
-
+                                        <select name="tipePengiriman" class="form-select" aria-label="Default select example">
+                                            @foreach (\App\Enums\PaymentType::cases() as $pembayaran)
+                                            <option value="{{ $pengiriman->value }}">
+                                                {{ $pembayaran->getLabelText() }}
+                                            </option>
+                                            @endforeach
                                         </select>
+
+                                        
                                     </div>
                                 </div>
 
                             </tbody>
                         </table>
+                        
                     </div>
                 </div>
             </div>
@@ -125,13 +130,13 @@
                             <div class="col">
                                 <h6 style="font-weight: bold;">Jumlah Produk</h6>
                             </div>
-                            <div class="col d-flex justify-content-end">{{$count}}</div>
+                            <div class="col d-flex justify-content-end">x {{$count}}</div>
                         </div>
                         <div class="row">
                             <div class="col">
                                 <h6 style="font-weight: bold;">Total Harga</h6>
                             </div>
-                            <div class="col d-flex justify-content-end">{{$total}}</div>
+                            <div class="col d-flex justify-content-end">Rp {{$total}}</div>
                         </div>
                         <div class="row">
                             <div class="col">
@@ -157,18 +162,31 @@
                 <div class="card checkout overflow-auto">
               
                     <div class="card-body">
-                        <!-- <h1 class="card-title-ringkasan ">Unggah Bukti Pembayaran</h1>
+                        <h1 class="card-title-ringkasan ">Unggah Bukti Pembayaran</h1>
                         <div class="image-detail-product-big mb-2">
-                            <img src="assets/img/bukti1.jpg" class="rounded mx-auto d-block" width="200px" height="200px">
+                            <img id="imagePreviewUpdate"
+                                src="{{ '../assets/img/no-image.jpg' }}"
+                                alt="Image Preview" class="rounded mx-auto d-block" width="200px"
+                                height="200px" />
+                            <div class="pt-2">
+                                <button type="button" class="btn btn-danger btn-sm"
+                                    style="display: none;" id="cancelImageUpdate">
+                                    <i class="bi bi-trash" style="color:white;"></i>
+                                </button>
+                                <input type="file" id="imageInputUpdate" name="foto"
+                                    accept="image/*" aria-label="File upload">
+                            </div>
 
                         </div>
+
+                        </form>
 
                         <div class="row mb-3">
 
                             <div class="col">
                                 
                             </div>
-                        </div> -->
+                        </div>
                         <div class="d-grid gap-2">
                             <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#buttonOrderNow">Buat Pesanan Sekarang</button>
                             <div class="modal fade" id="buttonOrderNow" tabindex="-1">
@@ -206,4 +224,26 @@
             </div>
         </div>
 </main>
+<script>
+        var defaultImage = @php echo isset($toko->foto) ? json_encode('storage/'.$toko->foto) : json_encode('assets/img/no-image.jpg'); @endphp
+
+        var imageInputUpdate = document.getElementById('imageInputUpdate');
+        var imagePreviewUpdate = document.getElementById('imagePreviewUpdate');
+        var cancelImageUpdate = document.getElementById('cancelImageUpdate');
+
+        imageInputUpdate.addEventListener('change', function(event) {
+            var reader = new FileReader();
+            reader.onload = function() {
+                imagePreviewUpdate.src = reader.result;
+                cancelImageUpdate.style.display = 'inline'; // Show cancel button
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        });
+
+        cancelImageUpdate.addEventListener('click', function() {
+            imagePreviewUpdate.src = defaultImage;
+            imageInputUpdate.value = ''; // Clear image input
+            cancelImageUpdate.style.display = 'none'; // Hide cancel button
+        });
+    </script>
 @endsection
