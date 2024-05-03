@@ -97,6 +97,7 @@
                                     </div>
                                 </div>
                             </tbody>
+                            </form>
                         </table>
                         <table>
                             <tbody>
@@ -179,7 +180,7 @@
 
                         </div>
 
-                        </form>
+                        
 
                         <div class="row mb-3">
 
