@@ -12,7 +12,7 @@ class DashboardController extends Controller
     {
         $user = Auth::user();
         if($user->role == 'admin') {
-            return view('dashboard');
+            return view('pages.admin.dashboard.index');
         }
 
         if(!$user->shop->verify) {

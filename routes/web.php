@@ -58,6 +58,7 @@ Route::middleware('auth')->group(function () {
 
         // Admin
         Route::middleware('role:admin')->group(function () {
+            Route::get('/dashboard', [DashboardController::class, 'index'])->name('user.index'); // user
             Route::get('/user', [UserController::class, 'index'])->name('user.index'); // user
             Route::get('/shop', [ShopController::class, 'index'])->name('shop.index'); // shop
             Route::get('/transaction', [TransactionController::class, 'index'])->name('transaction.index'); // transaction
