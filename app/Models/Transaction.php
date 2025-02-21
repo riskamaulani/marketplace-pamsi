@@ -37,4 +37,13 @@ class Transaction extends Model
             $model->id = IdGenerator::generate(['table' => 'transactions', 'field' => 'id', 'length' => 15, 'prefix' => 'TRX' . date('ym'), 'reset_on_prefix_change' => true]);
         });
     }
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
+    }
+    public function orders()
+{
+    return $this->hasMany(Order::class, 'transaction_id');
+}
+
 }

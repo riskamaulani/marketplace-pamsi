@@ -42,8 +42,7 @@ Route::middleware('auth')->group(function () {
 
 
     Route::prefix('admin')->middleware('role:admin,penjual')->group(function () {
-        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
+        
         // Seller
         Route::middleware('role:penjual')->group(function () {
             Route::middleware('check.shop.verify')->group(function () {
@@ -53,12 +52,14 @@ Route::middleware('auth')->group(function () {
             });
             Route::get('/shop/profile', [ShopController::class, 'edit'])->name('shop.edit'); // shop profile
             Route::patch('/shop/{shop}', [ShopController::class, 'update'])->name('shop.update'); // shop update
+            Route::get('/shop/dashboard', [DashboardController::class, 'index'])->name('dashboard.shop');
+
         });
 
 
         // Admin
         Route::middleware('role:admin')->group(function () {
-            Route::get('/dashboard', [DashboardController::class, 'index'])->name('user.index'); // user
+            Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index'); // user
             Route::get('/user', [UserController::class, 'index'])->name('user.index'); // user
             Route::get('/shop', [ShopController::class, 'index'])->name('shop.index'); // shop
             Route::get('/transaction', [TransactionController::class, 'index'])->name('transaction.index'); // transaction

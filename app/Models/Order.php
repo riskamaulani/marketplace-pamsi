@@ -58,6 +58,7 @@ class Order extends Model
     {
         return $this->belongsTo(Transaction::class);
     }
+    
 
     public function rating(): HasMany
     {

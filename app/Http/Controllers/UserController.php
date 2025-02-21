@@ -14,4 +14,6 @@ class UserController extends Controller
 
         return view('pages.admin.user.index');
     }
+
+    
 }

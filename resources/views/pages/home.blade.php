@@ -24,7 +24,7 @@
                     @foreach ($categories as $index => $category)
                         <a href="#" class="shrink-0">
                             <li class="py-2 px-4 text-white font-medium rounded-lg bg-opacity-90 transition-transform transform group-hover:scale-105"
-                                style="background-color: {{ ['#FF5733', '#33A1FF', '#28A745', '#FFC107', '#6F42C1', '#E83E8C', '#20C997', '#FD7E14', '#17A2B8', '#DC3545'][$index % 10] }};">
+                                style="background-color: {{ ['#28A745', '#28A745', '#28A745', '#28A745', '#28A745', '#28A745', '#28A745', '#28A745', '#28A745', '#28A745'][$index % 10] }};">
                                 {{ $category->name }}
                             </li>
                         </a>
