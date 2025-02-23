@@ -13,6 +13,7 @@
                 </div>
             </main>
         </div>
+        
 
         {{-- footer --}}
         <footer class="bg-[#c1c1c1]">

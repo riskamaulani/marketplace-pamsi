@@ -11,11 +11,11 @@ use Illuminate\Support\Facades\DB;
 class CartController extends Controller
 {
     public function index()
-    {
-
-        $carts = DB::table('carts')
+{
+    $carts = DB::table('carts')
         ->leftJoin('products', 'carts.product_id', '=', 'products.id')
         ->leftJoin('shops', 'products.shop_id', '=', 'shops.id')
+        ->where('carts.user_id', auth()->id()) // 🔥 Tambahkan filter user_id
         ->select('products.*', 'shops.name as shop_name', 'carts.total as total')
         ->orderBy('products.shop_id')
         ->get()
@@ -28,10 +28,9 @@ class CartController extends Controller
             ];
         });
 
-        return view('pages.cart', [
-            'carts' => $carts
-        ]);
-    }
+    return view('pages.cart', ['carts' => $carts]);
+}
+
 
     public function checkout()
     {

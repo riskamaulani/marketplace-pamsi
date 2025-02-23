@@ -57,4 +57,13 @@ class Product extends Model
     {
         return $this->belongsTo(Category::class);
     }
+    public function scopeFilterByDate($query, $filter)
+    {
+        return match ($filter) {
+            'daily' => $query->whereDate('created_at', today()),
+            'monthly' => $query->whereMonth('created_at', now()->month),
+            'yearly' => $query->whereYear('created_at', now()->year),
+            default => $query,
+        };
+    }
 }
