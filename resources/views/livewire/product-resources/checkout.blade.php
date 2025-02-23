@@ -42,41 +42,55 @@
         <pre x-text="JSON.stringify(shops, null, 2)"></pre> --}}
 
         @foreach ($shops as $shop)
-            <div class="px-5 py-4 bg-white shadow rounded-lg">
-                <p class="text-sm font-bold">{{ $shop['shop_name'] }}</p>
+        <div class="px-5 py-4 bg-white shadow rounded-lg">
+            <p class="text-sm font-bold">{{ $shop['shop_name'] }}</p>
 
-                <div class="mt-1">
-                    @foreach ($shop['products'] as $product)
-                        <div class="py-2 flex gap-2 items-start">
-                            <img src="{{ asset('storage/' . $product['image']) }}" alt="Pamsi"
-                                class="size-14 object-cover object-center aspect-square rounded-md">
-                            <div class="flex-1 flex justify-between items-center">
-                                <p class="text-sm flex-1">{{ $product['name'] }}</p>
-                                <p class="text-sm font-semibold">{{ $product['quantity'] }} x
-                                    Rp{{ $product['price'] }}</p>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-
-                <div class="pt-1 flex gap-2 items-center justify-between border-t">
-                    <p class="font-semibold">Total</p>
-                    <p class="font-semibold">Rp{{ $shop['total_shop_price'] }}</p>
-                </div>
-
-                <div class="mt-3 space-y-2">
-                    <div>
-                        <x-input-label for="note-{{ $shop['shop_id'] }}" value="Catatan (Opsional)" />
-                        <x-text-input id="note-{{ $shop['shop_id'] }}" class="block mt-1 w-full text-sm" type="text"
-                            name="note-{{ $shop['shop_id'] }}" x-model="shops['{{ $shop['shop_id'] }}'].note"
-                            autocomplete="note" />
+            <div class="mt-1">
+                @foreach ($shop['products'] as $product)
+                <div class="py-2 flex gap-2 items-start">
+                    <img src="{{ asset('storage/' . $product['image']) }}" alt="Pamsi"
+                        class="size-14 object-cover object-center aspect-square rounded-md">
+                    <div class="flex-1 flex justify-between items-center">
+                        <p class="text-sm flex-1">{{ $product['name'] }}</p>
+                        <p class="text-sm font-semibold">{{ $product['quantity'] }} x
+                            Rp{{ $product['price'] }}</p>
                     </div>
+                </div>
+                @endforeach
+            </div>
 
-                    <div>
-                        <x-input-label for="shipping-{{ $shop['shop_id'] }}" value="Pilih pengiriman" />
-                        <x-select-input id="shipping-{{ $shop['shop_id'] }}" class="block mt-1 w-full"
-                            name="shipping-{{ $shop['shop_id'] }}" x-model="shops['{{ $shop['shop_id'] }}'].shipping"
-                            @change="updateShipping('{{ $shop['shop_id'] }}', $event.target.value)" :items="[
+            <div class="pt-1 flex gap-2 items-center justify-between border-t">
+                <p class="font-semibold">Total</p>
+                <p class="font-semibold">Rp{{ $shop['total_shop_price'] }}</p>
+            </div>
+
+            <div class="mt-3 space-y-2">
+                <div>
+                    <x-input-label for="note-{{ $shop['shop_id'] }}" value="Catatan (Opsional)" />
+                    <x-text-input id="note-{{ $shop['shop_id'] }}" class="block mt-1 w-full text-sm" type="text"
+                        name="note-{{ $shop['shop_id'] }}" x-model="shops['{{ $shop['shop_id'] }}'].note"
+                        autocomplete="note" />
+                </div>
+
+
+            </div>
+        </div>
+        @endforeach
+    </div>
+
+    <form wire:submit.prevent="checkout"
+        class="lg:sticky lg:top-4 p-4 mx-auto w-full max-w-96 h-fit space-y-3 bg-white rounded-lg shadow">
+        <div>
+            <x-input-label for="address" value="Alamat Pengiriman" />
+            <x-text-area id="address" class="block mt-1 w-full text-sm" name="address" autocomplete="address"
+                wire:model="address" required></x-text-area>
+            <span x-show="errors.address" class="text-red-500 text-sm" x-text="errors.address"></span>
+        </div>
+        <div>
+            <x-input-label for="shipping-{{ $shop['shop_id'] }}" value="Pilih pengiriman" />
+            <x-select-input id="shipping-{{ $shop['shop_id'] }}" class="block mt-1 w-full"
+                name="shipping-{{ $shop['shop_id'] }}" x-model="shops['{{ $shop['shop_id'] }}'].shipping"
+                @change="updateShipping('{{ $shop['shop_id'] }}', $event.target.value)" :items="[
                                 [
                                     'value' => 'take-self',
                                     'name' => 'Ambil Sendiri',
@@ -90,21 +104,12 @@
                                     'name' => 'Kurir (Luar Mataram) | Hubungi Admin',
                                 ],
                             ]"
-                            required />
-                    </div>
-                </div>
-            </div>
-        @endforeach
-    </div>
+                required />
 
-    <form wire:submit.prevent="checkout"
-        class="lg:sticky lg:top-4 p-4 mx-auto w-full max-w-96 h-fit space-y-3 bg-white rounded-lg shadow">
-        <div>
-            <x-input-label for="address" value="Alamat Pengiriman" />
-            <x-text-area id="address" class="block mt-1 w-full text-sm" name="address" autocomplete="address"
-                wire:model="address" required></x-text-area>
-            <span x-show="errors.address" class="text-red-500 text-sm" x-text="errors.address"></span>
+
         </div>
+        <div class="border-t-2 border-dashed border-gray-200 my-4"></div>
+
 
         <h4 class="text-lg font-bold">Ringkasan</h4>
 
@@ -152,9 +157,9 @@
                 <p x-show="errors.image" class="text-red-500 text-sm" x-text="errors.image"></p>
 
                 @if ($image)
-                    <div class="bg-gray-200 rounded-t-md overflow-hidden">
-                        <img class="mx-auto h-40 object-contain" src="{{ $image->temporaryUrl() }}">
-                    </div>
+                <div class="bg-gray-200 rounded-t-md overflow-hidden">
+                    <img class="mx-auto h-40 object-contain" src="{{ $image->temporaryUrl() }}">
+                </div>
                 @endif
                 <p class="text-gray-400" wire:loading wire:target="image">Sedang upload...</p>
                 <div class="relative h-10 border border-gray-300">
@@ -163,7 +168,7 @@
 
                     <div class="absolute size-full flex items-center justify-center">
                         <p class="text-gray-700 font-medium">Pilih gambar @if ($image)
-                                lain
+                            lain
                             @endif
                         </p>
                     </div>

@@ -17,19 +17,15 @@ class DashboardController extends Controller
         $user = Auth::user();
         if ($user->role == 'admin') {
             return view('pages.admin.dashboard.index', [
-                'totalSales' => Order::whereHas('transaction', function ($query) {
-                    $query->where('status', 'accept');
-                })->sum('products_quantity'), // Total produk terjual dengan status transaksi "accept"
-
-                'totalRevenue' => Order::whereHas('transaction', function ($query) {
-                    $query->where('status', 'accept');
-                })->sum('total_product'), // Total pendapatan hanya dari transaksi yang diterima
-
+                'totalSales' => Order::where('status', 'done')->sum('products_quantity'), // Total produk terjual hanya dari order "done"
+        
+                'totalRevenue' => Order::where('status', 'done')->sum('total_product'), // Total pendapatan hanya dari order "done"
+        
                 'totalStores' => Shop::count(), // Banyak toko
                 'totalUsers' => User::count(), // Banyak pengguna
             ]);
         }
-
+        
         if (!$user->shop->verify) {
             return redirect()->route('shop.edit');
         }
@@ -38,17 +34,12 @@ class DashboardController extends Controller
 
         return view('pages.dashboard', [
             'totalSales' => Order::where('shop_id', $shopId)
-                ->whereHas('transaction', function ($query) {
-                    $query->where('status', 'accept');
-                })
-                ->sum('products_quantity'), // Total produk terjual di toko (hanya yang statusnya accept)
+            ->where('status', 'done')
+            ->sum('products_quantity'), // Total produk terjual hanya dari order "done" di toko ini
 
-            'totalRevenue' => Order::where('shop_id', $shopId)
-                ->whereHas('transaction', function ($query) {
-                    $query->where('status', 'accept');
-                })
-                ->sum('total_product'), // Total pendapatan toko (hanya dari transaksi yang diterima)
-
+        'totalRevenue' => Order::where('shop_id', $shopId)
+            ->where('status', 'done')
+            ->sum('total_product'), // Total pendapatan hanya dari order "done" di toko ini
             'totalBuyers' => Transaction::whereHas('orders', function ($query) use ($shopId) {
                 $query->where('shop_id', $shopId);
             })->distinct('user_id')->count('user_id'), // Total pembeli unik untuk toko ini
@@ -60,8 +51,9 @@ class DashboardController extends Controller
 
     public function home()
     {
-        return view('pages.home', [
-            'categories' => Category::select('id', 'name')->orderBy('name')->get()
-        ]);
+        $categories = Category::all();
+        return view('pages.home', compact('categories'));
+
+        
     }
 }

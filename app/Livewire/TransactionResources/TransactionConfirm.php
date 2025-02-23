@@ -3,9 +3,11 @@
 namespace App\Livewire\TransactionResources;
 
 use App\Models\Order;
+use App\Models\Product;
 use App\Models\Transaction;
 use Livewire\Attributes\On;
 use Livewire\Component;
+use Illuminate\Support\Facades\DB;
 
 class TransactionConfirm extends Component
 {
@@ -36,15 +38,48 @@ class TransactionConfirm extends Component
         }
     }
 
+    // public function accept()
+    // {
+    //     $this->transaction->status = 'accept';
+    //     $this->transaction->save();
+
+    //     Order::where('transaction_id', $this->transaction->id)->update(['status' => 'process']);
+
+
+    //     $this->clearModal();
+    // }
+
     public function accept()
-    {
-        $this->transaction->status = 'accept';
-        $this->transaction->save();
+{
+    // Ubah status transaksi menjadi 'accept'
+    $this->transaction->status = 'accept';
+    $this->transaction->save();
 
-        Order::where('transaction_id', $this->transaction->id)->update(['status' => 'process']);
+    // Ubah status pesanan menjadi 'process'
+    Order::where('transaction_id', $this->transaction->id)->update(['status' => 'process']);
 
-        $this->clearModal();
+    // Ambil semua pesanan terkait transaksi ini
+    $orders = Order::where('transaction_id', $this->transaction->id)->get();
+
+    // Iterasi setiap order
+    foreach ($orders as $order) {
+        // Decode JSON dalam field products
+        $products = json_decode($order->products, true);
+
+        if (is_array($products)) {
+            foreach ($products as $product) {
+                // Kurangi stok produk berdasarkan ID dan quantity dari JSON
+                Product::where('id', $product['id'])
+                    ->decrement('stock', $product['quantity']);
+            }
+        }
     }
+
+    // Tutup modal atau lakukan tindakan lainnya
+    $this->clearModal();
+}
+
+
 
     public function reject()
     {

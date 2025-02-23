@@ -18,7 +18,7 @@
 
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
-  <!-- Card 1 -->
+  <!-- Card 1 -->   
   <div class="bg-white p-6 rounded-lg shadow-md flex items-center space-x-4">
     <div class="bg-blue-500 text-white p-3 rounded-full">
       <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
@@ -69,24 +69,32 @@
 <section>
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
   <div class="p-4 bg-white rounded-lg shadow">
-    <div class="flex justify-between items-center ">
+    <!-- <div class="flex justify-between items-center ">
       <h4 class="font-bold text-[#012970] text-xl">Laporan Pendapatan</h4>
-    </div>
-    <div class="card-body">
-      <!-- Line Chart -->
-      <livewire:chart-component />
-    </div>
+    </div> -->
+    <div wire:key="chart-product-sales" class="card-body">
+        <!-- Line Chart -->
+        
+        @livewire('chart-product-sales', [], key('chart-product-sales'))
+        
+       
+      </div>
 
   </div>
 
   <div class="p-4 bg-white rounded-lg shadow">
-    <div class="flex justify-between items-center ">
+    <!-- <div class="flex justify-between items-center ">
       <h4 class="font-bold text-[#012970] text-xl">Laporan Penjualan</h4>
-    </div>
-    <div class="card-body">
-      <!-- Line Chart -->
-      
-    </div>
+    </div> -->
+    <div  wire:key="chart-revenue" class="card-body">
+        <!-- Line Chart -->
+       
+        @livewire('chart-revenue', [], key('chart-revenue'))
+        
+        
+
+        
+      </div>
   </div>
 </div>
 </section>

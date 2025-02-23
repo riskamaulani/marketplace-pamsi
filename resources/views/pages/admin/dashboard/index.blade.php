@@ -80,22 +80,30 @@
 <section>
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
     <div class="p-4 bg-white rounded-lg shadow">
-      <div class="flex justify-between items-center ">
+      <!-- <div class="flex justify-between items-center ">
         <h4 class="font-bold text-[#012970] text-xl">Laporan Pendapatan</h4>
-      </div>
-      <div class="card-body">
+      </div> -->
+      <div wire:key="chart-product-sales" class="card-body">
         <!-- Line Chart -->
-        <livewire:chart-component />
+        
+        @livewire('chart-product-sales', [], key('chart-product-sales'))
+        
+       
       </div>
 
     </div>
 
     <div class="p-4 bg-white rounded-lg shadow">
-      <div class="flex justify-between items-center ">
-        <h4 class="font-bold text-[#012970] text-xl">Laporan Penjualan</h4>
-      </div>
-      <div class="card-body">
+      <!-- <div class="flex justify-between items-center ">
+        <h4 class="font-bold text-[#012970] text-xl">Laporan Penjualan Produk</h4>
+      </div> -->
+      <div  wire:key="chart-revenue" class="card-body">
         <!-- Line Chart -->
+       
+        @livewire('chart-revenue', [], key('chart-revenue'))
+        
+        
+
         
       </div>
     </div>

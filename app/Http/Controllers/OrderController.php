@@ -41,6 +41,7 @@ class OrderController extends Controller
             'order' => $order,
             'products' => json_decode($order->products)
         ]);
+        
     }
 
     public function rating()

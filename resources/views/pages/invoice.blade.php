@@ -57,6 +57,11 @@
                         <p class="flex-1 font-semibold">{{ $order->note ?? '-' }} </p>
                     </div>
                     <div class="flex gap-2">
+                        <p class="flex-1 max-w-40">Nama Pembeli</p>
+                        <p class="font-semibold">:</p>
+                        <p class="flex-1 font-semibold">{{ $order->transaction->user->name}} ({{ $order->transaction->user->contact}})</p>
+                    </div>
+                    <div class="flex gap-2">
                         <p class="flex-1 max-w-40">Pembayaran</p>
                         <p class="font-semibold">:</p>
                         <p x-data class="flex-1 font-semibold"

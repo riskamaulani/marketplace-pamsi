@@ -34,7 +34,7 @@
             <template x-for="product in products" :key="product.id">
                 <div class="flex gap-2 items-center justify-between border-t border-dashed">
                     <div class="pt-2 flex gap-2">
-                        <img :src="`{{ asset('') }}${product.image}`" alt="Produk"
+                        <img :src="'{{ asset('storage/products/')  }}' + product.image" alt="Produk"
                             class="h-12 object-cover object-center aspect-square rounded-sm">
 
                         <div>
@@ -55,6 +55,8 @@
     <div class="space-y-1">
         <p class="font-semibold">Info Pengiriman</p>
 
+
+
         <div class="space-y-1">
             <div class="flex gap-1">
                 <p class="w-28 text-sm font-medium shrink-0">Pengiriman</p>
@@ -68,6 +70,9 @@
                 <p class="text-sm" x-text="data?.address"></p>
             </div>
         </div>
+
+
+
     </div>
 
     <hr>
@@ -91,4 +96,26 @@
             <p class="font-semibold">Rp<span x-text="data?.total"></span></p>
         </div>
     </div>
+    <div class="flex justify-end">
+        @if(optional($order)->id)
+        <a href="{{ route('order.show', ['order' => $order->id]) }}" target="_blank"
+            class="px-4 py-2 my-2 bg-green-500 text-white rounded hover:bg-green-600 flex items-center gap-2">
+
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+            </svg>
+
+            Download Invoice
+        </a>
+        @else
+        <button class="px-4 py-2 my-2 bg-gray-400 text-white rounded cursor-not-allowed flex items-center gap-2" disabled>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+            </svg>
+            Invoice Tidak Tersedia
+        </button>
+        @endif
+    </div>
+
+
 </div>

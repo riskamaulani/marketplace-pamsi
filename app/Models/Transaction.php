@@ -42,8 +42,11 @@ class Transaction extends Model
         return $this->belongsTo(Order::class);
     }
     public function orders()
-{
-    return $this->hasMany(Order::class, 'transaction_id');
-}
-
+    {
+        return $this->hasMany(Order::class, 'transaction_id');
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }
