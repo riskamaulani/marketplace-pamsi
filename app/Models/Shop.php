@@ -48,4 +48,13 @@ class Shop extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function products()
+    {
+        return $this->hasMany(Product::class, 'shop_id', 'id'); //  Relasi one-to-many
+    }
+    public function getRouteKeyName()
+{
+    return 'id'; // 🔥 Jika akses pakai slug, bukan ID
+}
+    
 }

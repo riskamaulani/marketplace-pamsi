@@ -44,6 +44,9 @@
 
             <div class="flex-1 max-w-5xl space-y-4">
                 <div class="p-4 bg-white shadow rounded-lg">
+                
+
+
                     <livewire:shop-resources.shop-product />
                 </div>
             </div>

@@ -37,6 +37,7 @@ Route::middleware('auth')->group(function () {
     // Buyer
     Route::get('/product/{product}', [ProductController::class, 'show'])->name('product.detail'); // product detail
     Route::get('/shop/{shop}', [ShopController::class, 'show'])->name('shop.show'); // product detail
+    
     Route::get('/cart', [CartController::class, 'index'])->name('cart');
     Route::get('/checkout', [CartController::class, 'checkout'])->name('checkout'); // product checkout
 
