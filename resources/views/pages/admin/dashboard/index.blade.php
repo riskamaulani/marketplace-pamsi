@@ -85,11 +85,18 @@
       </div> -->
       <div wire:key="chart-product-sales" class="card-body">
         <!-- Line Chart -->
-        
-        @livewire('sales-chart')
 
-        
-       
+        @if(auth()->user()->isAdmin())
+        {{-- Untuk Admin: Menampilkan semua data --}}
+        @livewire('sales-chart', ['shopId' => null])
+        @else
+        {{-- Untuk Non-Admin: Hanya menampilkan data toko terkait --}}
+        @livewire('sales-chart', ['shopId' => auth()->user()->shop->id])
+        @endif
+
+
+
+
       </div>
 
     </div>
@@ -98,14 +105,14 @@
       <!-- <div class="flex justify-between items-center ">
         <h4 class="font-bold text-[#012970] text-xl">Laporan Pendapatan</h4>
       </div> -->
-      <div  wire:key="chart-revenue" class="card-body">
+      <div wire:key="chart-revenue" class="card-body">
         <!-- Line Chart -->
-       
-        @livewire('chart-revenue', [], key('chart-revenue'))
-        
-        
 
-        
+        @livewire('chart-revenue', [], key('chart-revenue'))
+
+
+
+
       </div>
     </div>
   </div>

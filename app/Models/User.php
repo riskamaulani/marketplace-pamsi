@@ -85,5 +85,8 @@ class User extends Authenticatable
     {
         return $this->hasManyThrough(Order::class, Transaction::class)->latest();
     }
-    
+    public function isAdmin()
+    {
+        return $this->role === 'admin'; // Sesuaikan dengan kolom di database Anda
+    }
 }

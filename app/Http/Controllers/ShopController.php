@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ShopProfileUpdateRequest;
-use App\Models\Product;
 use App\Models\Shop;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,16 +15,12 @@ class ShopController extends Controller
         return view('pages.admin.shop.index');
     }
 
-    public function show($shopId)
-{
-    $shop = Shop::where('id', $shopId)->firstOrFail();
-    $products = Product::where('shop_id', $shopId)->get();
-
-    return view('pages.shop', compact('shop', 'products'));
-}
-
-
-
+    public function show(Shop $shop)
+    {
+        return view('pages.shop', [
+            'shop' => $shop
+        ]);
+    }
 
     public function edit()
     {
@@ -45,4 +40,5 @@ class ShopController extends Controller
 
         return Redirect::back();
     }
+    
 }

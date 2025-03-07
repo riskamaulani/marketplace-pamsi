@@ -33,7 +33,7 @@ class TransactionTable extends DataTableComponent
             Column::make("Total", "total"),
             Column::make("Payment", "payment"),
             Column::make("Address", "address"),
-            Column::make("User id", "user_id")
+            Column::make("Username", "user.username")
                 ->searchable(),
             Column::make("Tanggal", "created_at"),
             Column::make("Status")

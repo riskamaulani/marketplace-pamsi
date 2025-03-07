@@ -1,7 +1,7 @@
 <div>
     <div class="flex justify-between items-center mb-4">
     <h4 class="font-bold text-[#012970] text-xl">Laporan Penjualan</h4>
-        <select wire:model="filter" id="filter" class="px-4 py-2 border rounded">
+        <select wire:model="filter" id="filter" class="px-8 py-2 border rounded">
             <option value="daily">Per Hari</option>
             <option value="monthly">Per Bulan</option>
             <option value="yearly">Per Tahun</option>

@@ -1,8 +1,5 @@
 <div class="grid gap-4 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5">
-
-
-
-
+    
     @foreach ($products as $product)
     <a href="{{ route('product.detail', $product) }}">
         <div class="max-w-[300px] h-full border shadow-md rounded-md overflow-hidden">
