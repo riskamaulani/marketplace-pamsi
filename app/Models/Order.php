@@ -45,7 +45,7 @@ class Order extends Model
     {
         parent::boot();
         self::creating(function ($model) {
-            $model->id = IdGenerator::generate(['table' => 'orders', 'field' => 'id', 'length' => 15, 'prefix' => 'ODR' . date('ym'), 'reset_on_prefix_change' => true]);
+            $model->id = IdGenerator::generate(['table' => 'orders', 'field' => 'id', 'length' => 10, 'prefix' => 'ODR' . date('ym'), 'reset_on_prefix_change' => true]);
         });
     }
 

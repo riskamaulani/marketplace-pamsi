@@ -35,7 +35,9 @@ class TransactionTable extends DataTableComponent
             Column::make("Address", "address"),
             Column::make("Username", "user.username")
                 ->searchable(),
-            Column::make("Tanggal", "created_at"),
+            Column::make("No HP", "user.contact"),
+            Column::make("Tanggal", "created_at")
+            ->sortable(),
             Column::make("Status")
                 ->label(
                 fn ($row) => view('components.table.trx-confirm-reject')->with([

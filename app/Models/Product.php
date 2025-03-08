@@ -39,7 +39,7 @@ class Product extends Model
     {
         parent::boot();
         self::creating(function ($model) {
-            $model->id = IdGenerator::generate(['table' => 'products', 'field' => 'id', 'length' => 15, 'prefix' => 'PRD' . date('ym'), 'reset_on_prefix_change' => true]);
+            $model->id = IdGenerator::generate(['table' => 'products', 'field' => 'id', 'length' => 10, 'prefix' => 'PRD' . date('ym'), 'reset_on_prefix_change' => true]);
         });
     }
 

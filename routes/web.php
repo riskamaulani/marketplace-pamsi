@@ -25,23 +25,17 @@ use App\Models\Transaction;
 
 Route::middleware('auth')->group(function () {
     Route::get('/', [DashboardController::class, 'home'])->name('home');
-    
-
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
     Route::get('/order', [OrderController::class, 'buyer'])->name('order');
     Route::get('/order/{order}', [OrderController::class, 'show'])->name('order.show');
-
 
     // Buyer
     Route::get('/product/{product}', [ProductController::class, 'show'])->name('product.detail'); // product detail
     Route::get('/shop/{shop}', [ShopController::class, 'show'])->name('shop.show'); // product detail
-    
     Route::get('/cart', [CartController::class, 'index'])->name('cart');
     Route::get('/checkout', [CartController::class, 'checkout'])->name('checkout'); // product checkout
-
 
     Route::prefix('admin')->middleware('role:admin,penjual')->group(function () {
         
@@ -58,17 +52,16 @@ Route::middleware('auth')->group(function () {
 
         });
 
-
         // Admin
         Route::middleware('role:admin')->group(function () {
-            Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index'); // user
+            Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index'); // dashboard
             Route::get('/user', [UserController::class, 'index'])->name('user.index'); // user
             Route::get('/shop', [ShopController::class, 'index'])->name('shop.index'); // shop
             Route::get('/transaction', [TransactionController::class, 'index'])->name('transaction.index'); // transaction
             Route::get('/categories', [CategoryController::class, 'index'])->name('category.index'); // category
         });
-
     });
+
 });
 
 require __DIR__.'/auth.php';

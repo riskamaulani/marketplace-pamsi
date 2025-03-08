@@ -21,7 +21,7 @@ class Category extends Model
     {
         parent::boot();
         self::creating(function ($model) {
-            $model->id = IdGenerator::generate(['table' => 'categories', 'field' => 'id', 'length' => 15, 'prefix' => 'CTG' . date('ym'), 'reset_on_prefix_change' => true]);
+            $model->id = IdGenerator::generate(['table' => 'categories', 'field' => 'id', 'length' => 10, 'prefix' => 'CTG' . date('ym'), 'reset_on_prefix_change' => true]);
         });
     }
 
