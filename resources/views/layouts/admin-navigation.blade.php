@@ -13,8 +13,10 @@
                 <img class="mx-auto h-9 w-auto" src="{{ asset('assets/images/pamsi-green.png') }}" alt="pamsi">
             </a>
         </div>
+        
 
         <div x-data="{ open: false }" @click.outside="open = false">
+            
             <button x-ref="button" @click="open = ! open"
                 class="flex text-sm font-semibold text-[#012970]">{{ Auth::user()->name }}<svg
                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"

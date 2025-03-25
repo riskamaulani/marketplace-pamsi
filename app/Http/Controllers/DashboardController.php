@@ -33,7 +33,7 @@ class DashboardController extends Controller
         $shopId = $user->shop->id;
 
         return view('pages.dashboard', [
-            'totalSales' => Order::where('shop_id', $shopId)
+           'totalSales' => Order::where('shop_id', $shopId)
             ->where('status', 'done')
             ->sum('products_quantity'), // Total produk terjual hanya dari order "done" di toko ini
 
@@ -53,7 +53,7 @@ class DashboardController extends Controller
     {
         $categories = Category::all();
         return view('pages.home', compact('categories'));
-
         
     }
+    
 }

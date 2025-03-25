@@ -1,6 +1,6 @@
 <section x-data="{
     shops: @entangle('shops'),
-    price: { 'take-self': 0, 'courier-in-mataram': 10000, 'courier-out-mataram': 0 },
+    price: { 'take-self': 0, 'courier-in-mataram': 10000, 'courier-in-lobar': 15000,'courier-in-loteng': 20000, 'courier-out-mataram': 0 },
     calculateTotalShipping() {
         return Object.values(this.shops).reduce((total, shop) => {
             const shipping = shop.shipping;
@@ -88,7 +88,7 @@
         </div>
         <div>
             <x-input-label for="shipping-{{ $shop['shop_id'] }}" value="Pilih pengiriman" />
-            <x-select-input id="shipping-{{ $shop['shop_id'] }}" class="block mt-1 w-full"
+            <x-select-input id="shipping-{{ $shop['shop_id'] }}" class="block p-1 mt-1 w-full"
                 name="shipping-{{ $shop['shop_id'] }}" x-model="shops['{{ $shop['shop_id'] }}'].shipping"
                 @change="updateShipping('{{ $shop['shop_id'] }}', $event.target.value)" :items="[
                                 [
@@ -100,6 +100,14 @@
                                     'name' => 'Kurir (Daerah Mataram) | Rp10.000',
                                 ],
                                 [
+                                    'value' => 'courier-in-lobar',
+                                    'name' => 'Kurir (Daerah Lombok Barat) | Rp15.000',
+                                ],
+                                [
+                                    'value' => 'courier-in-loteng',
+                                    'name' => 'Kurir (Daerah Lombok Tengah) | Rp20.000',
+                                ],
+                                [
                                     'value' => 'courier-out-mataram',
                                     'name' => 'Kurir (Luar Mataram) | Hubungi Admin',
                                 ],
@@ -107,6 +115,15 @@
                 required />
 
 
+
+
+
+        </div>
+        <div class="flex items-center gap-2 px-3 py-2 text-white font-bold bg-green-600 rounded-md">
+            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Z"></path>
+            </svg>
+            <span>Pengantaran : 15.00-17.00 WITA</span>
         </div>
         <div class="border-t-2 border-dashed border-gray-200 my-4"></div>
 
@@ -136,12 +153,9 @@
 
             <div class="pt-5">
                 <x-input-label for="payment" value="Metode pembayaran" />
-                <x-select-input id="payment" class="block mt-1 w-full" name="payment" x-model="payment"
+                <x-select-input id="payment" class="block p-1 mt-1 w-full" name="payment" x-model="payment"
                     :items="[
-                        [
-                            'value' => 'cod',
-                            'name' => 'COD',
-                        ],
+                        
                         [
                             'value' => 'transfer',
                             'name' => 'Transfer Bank NTB (xxxxxxx - Madrasah Alam Sayang Ibu)',
@@ -150,10 +164,14 @@
                             'value' => 'e-wallet',
                             'name' => 'E-Wallet xxx (0873xxxx - Madrasah Alam Sayang Ibu)',
                         ],
+                        [
+                            'value' => 'cod',
+                            'name' => 'COD (Fotokan nominal uang)',
+                        ],
                     ]" required />
             </div>
 
-            <div x-cloak x-show="payment != 'cod'">
+            <div x-cloak x-show="payment = 'transfer'">
                 <p x-show="errors.image" class="text-red-500 text-sm" x-text="errors.image"></p>
 
                 @if ($image)

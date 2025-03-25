@@ -20,8 +20,10 @@
                 </svg>
             </button>
         </form>
+        
 
         <div class="flex gap-5 items-center">
+            <div>Hallo, {{ $userName }} !</div>
             <a href="{{ route('cart') }}">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="size-[22px]" viewBox="0 0 16 16">
