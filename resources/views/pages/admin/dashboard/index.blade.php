@@ -118,6 +118,22 @@
   </div>
 </section>
 
+<section>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+    <div class="p-4 bg-white rounded-lg shadow">
+      
+      <div wire:key="chart-product-sales" class="card-body">
+      <livewire:admin.pendapatan-shop />
+
+
+      </div>
+
+    </div>
+
+</section>
+
+
+
 
 
 
