@@ -9,25 +9,34 @@ use Livewire\Component;
 
 class PendapatanShop extends Component
 {
+    public $pendapatanPerMinggu = [];
+
+    public function mount()
+    {
+        $this->updatePendapatanPerMinggu();
+    }
+
+    private function updatePendapatanPerMinggu()
+    {
+        $this->pendapatanPerMinggu = Shop::join('orders', 'shops.id', '=', 'orders.shop_id')
+            ->select(
+                'shops.name as nama_toko',
+                DB::raw("YEARWEEK(orders.created_at, 1) as minggu"),
+                DB::raw("DATE(orders.created_at) as tanggal"),
+                DB::raw("DAYNAME(orders.created_at) as hari"),
+                DB::raw("SUM(orders.total) as total_pendapatan")
+            )
+            ->where('orders.created_at', '>=', Carbon::now()->subWeeks(5)) // Ambil 5 minggu terakhir
+            ->groupBy('shops.name', DB::raw("YEARWEEK(orders.created_at, 1)"), DB::raw("DATE(orders.created_at)"), DB::raw("DAYNAME(orders.created_at)"))
+            ->orderBy(DB::raw("DATE(orders.created_at)"), 'desc')
+            ->get();
+    }
+
     public function render()
     {
-        // Ambil pendapatan dalam seminggu terakhir dari tabel orders
-        $pendapatanMinggu = Shop::select('shops.id', 'shops.name', DB::raw('SUM(orders.total) as total_pendapatan'))
-            ->join('orders', 'shops.id', '=', 'orders.shop_id')
-            ->where('orders.created_at', '>=', Carbon::now()->subWeek())
-            ->groupBy('shops.id', 'shops.name')
-            ->get();
-
-        // Ambil pendapatan dalam sebulan terakhir dari tabel orders
-        $pendapatanBulan = Shop::select('shops.id', 'shops.name', DB::raw('SUM(orders.total) as total_pendapatan'))
-            ->join('orders', 'shops.id', '=', 'orders.shop_id')
-            ->where('orders.created_at', '>=', Carbon::now()->subMonth())
-            ->groupBy('shops.id', 'shops.name')
-            ->get();
-
         return view('livewire.admin.pendapatan-shop', [
-            'pendapatanMinggu' => $pendapatanMinggu,
-            'pendapatanBulan' => $pendapatanBulan,
+            'pendapatanPerMinggu' => $this->pendapatanPerMinggu,
         ]);
     }
+    
 }
